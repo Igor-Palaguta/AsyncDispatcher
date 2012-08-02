@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D62B457315C8011600AE8EC4 /* ADCompositeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B457215C8011500AE8EC4 /* ADCompositeOperation.m */; };
+		D62B45B415C9656900AE8EC4 /* ADOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4EF9815B420940035C505 /* ADOperation.m */; };
+		D66BA31515B6E269008DAEA6 /* ADOperation+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D66BA31415B6E269008DAEA6 /* ADOperation+Private.m */; };
+		D671E37D15C01F9B00F211DF /* ADAtomicDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */; };
+		D68CF4F015BECE5E00660CD6 /* ADMutableCompositeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */; };
+		D68CF58A15BFF00800660CD6 /* ADMutableResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF58915BFF00700660CD6 /* ADMutableResult.m */; };
+		D6B66DD515B993BD0035AEB8 /* ADBlockWrappers.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B66DD415B993BD0035AEB8 /* ADBlockWrappers.m */; };
+		D6C4EF7C15B3FECD0035C505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF7B15B3FECD0035C505 /* Foundation.framework */; };
+		D6C4EF8115B3FECD0035C505 /* AsyncDispatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D6C4EF8015B3FECD0035C505 /* AsyncDispatcher.h */; };
+		D6C4EF9715B41E810035C505 /* ADBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4EF9615B41E810035C505 /* ADBlockOperation.m */; };
+		D6C4EFA215B458F50035C505 /* ADDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4EFA115B458F50035C505 /* ADDispatchQueue.m */; };
+		D6C4EFA515B465070035C505 /* ADOperationMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4EFA415B465070035C505 /* ADOperationMonitor.m */; };
+		D6D7B6FD15C68586009AD4AD /* ADBlockUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D7B6FC15C68586009AD4AD /* ADBlockUtils.m */; };
+		D6D7B70415C6C987009AD4AD /* ADSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D7B70315C6C986009AD4AD /* ADSession.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D6C4EF7615B3FECD0035C505 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				D6C4EF8115B3FECD0035C505 /* AsyncDispatcher.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D62B457115C8011400AE8EC4 /* ADCompositeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCompositeOperation.h; sourceTree = "<group>"; };
+		D62B457215C8011500AE8EC4 /* ADCompositeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCompositeOperation.m; sourceTree = "<group>"; };
+		D62B45B515C966BD00AE8EC4 /* ADDispatchArcDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDispatchArcDefs.h; sourceTree = "<group>"; };
+		D62B465215C9756500AE8EC4 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = readme.txt; path = ../readme.txt; sourceTree = "<group>"; };
+		D66BA31315B6E268008DAEA6 /* ADOperation+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ADOperation+Private.h"; sourceTree = "<group>"; };
+		D66BA31415B6E269008DAEA6 /* ADOperation+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ADOperation+Private.m"; sourceTree = "<group>"; };
+		D671E37B15C01F9A00F211DF /* ADAtomicDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAtomicDictionary.h; sourceTree = "<group>"; };
+		D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAtomicDictionary.m; sourceTree = "<group>"; };
+		D67B6CBC15B8364C0020BFC8 /* ADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADRequest.h; sourceTree = "<group>"; };
+		D68CF4EE15BECE5D00660CD6 /* ADMutableCompositeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMutableCompositeResult.h; sourceTree = "<group>"; };
+		D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMutableCompositeResult.m; sourceTree = "<group>"; };
+		D68CF58815BFF00700660CD6 /* ADMutableResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMutableResult.h; sourceTree = "<group>"; };
+		D68CF58915BFF00700660CD6 /* ADMutableResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMutableResult.m; sourceTree = "<group>"; };
+		D6B66DD315B993BC0035AEB8 /* ADBlockWrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBlockWrappers.h; sourceTree = "<group>"; };
+		D6B66DD415B993BD0035AEB8 /* ADBlockWrappers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBlockWrappers.m; sourceTree = "<group>"; };
+		D6C4EF7815B3FECD0035C505 /* libAsyncDispatcher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAsyncDispatcher.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6C4EF7B15B3FECD0035C505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D6C4EF7F15B3FECD0035C505 /* AsyncDispatcher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsyncDispatcher-Prefix.pch"; sourceTree = "<group>"; };
+		D6C4EF8015B3FECD0035C505 /* AsyncDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncDispatcher.h; sourceTree = "<group>"; };
+		D6C4EF8915B401A30035C505 /* ADOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADOperation.h; sourceTree = "<group>"; };
+		D6C4EF8B15B402C90035C505 /* ADExport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADExport.h; sourceTree = "<group>"; };
+		D6C4EF8C15B419250035C505 /* ADResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADResult.h; sourceTree = "<group>"; };
+		D6C4EF9515B41E800035C505 /* ADBlockOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBlockOperation.h; sourceTree = "<group>"; };
+		D6C4EF9615B41E810035C505 /* ADBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBlockOperation.m; sourceTree = "<group>"; };
+		D6C4EF9815B420940035C505 /* ADOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADOperation.m; sourceTree = "<group>"; };
+		D6C4EF9D15B4422F0035C505 /* ADBlockDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBlockDefs.h; sourceTree = "<group>"; };
+		D6C4EFA015B458F40035C505 /* ADDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDispatchQueue.h; sourceTree = "<group>"; };
+		D6C4EFA115B458F50035C505 /* ADDispatchQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDispatchQueue.m; sourceTree = "<group>"; };
+		D6C4EFA315B465070035C505 /* ADOperationMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADOperationMonitor.h; sourceTree = "<group>"; };
+		D6C4EFA415B465070035C505 /* ADOperationMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADOperationMonitor.m; sourceTree = "<group>"; };
+		D6D7B6FB15C68585009AD4AD /* ADBlockUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBlockUtils.h; sourceTree = "<group>"; };
+		D6D7B6FC15C68586009AD4AD /* ADBlockUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBlockUtils.m; sourceTree = "<group>"; };
+		D6D7B70115C6C726009AD4AD /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		D6D7B70215C6C986009AD4AD /* ADSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSession.h; sourceTree = "<group>"; };
+		D6D7B70315C6C986009AD4AD /* ADSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSession.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D6C4EF7515B3FECD0035C505 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6C4EF7C15B3FECD0035C505 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D6C4EF6D15B3FECD0035C505 = {
+			isa = PBXGroup;
+			children = (
+				D6C4EF7D15B3FECD0035C505 /* AsyncDispatcher */,
+				D6C4EF7A15B3FECD0035C505 /* Frameworks */,
+				D6C4EF7915B3FECD0035C505 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D6C4EF7915B3FECD0035C505 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6C4EF7815B3FECD0035C505 /* libAsyncDispatcher.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D6C4EF7A15B3FECD0035C505 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6C4EF7B15B3FECD0035C505 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6C4EF7D15B3FECD0035C505 /* AsyncDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				D6C4EF7E15B3FECD0035C505 /* Supporting Files */,
+				D6C4EF8A15B401B70035C505 /* Detail */,
+				D6C4EF8015B3FECD0035C505 /* AsyncDispatcher.h */,
+				D62B457115C8011400AE8EC4 /* ADCompositeOperation.h */,
+				D62B457215C8011500AE8EC4 /* ADCompositeOperation.m */,
+				D6B66DD315B993BC0035AEB8 /* ADBlockWrappers.h */,
+				D6B66DD415B993BD0035AEB8 /* ADBlockWrappers.m */,
+				D6C4EF8915B401A30035C505 /* ADOperation.h */,
+				D6C4EF9815B420940035C505 /* ADOperation.m */,
+				D6C4EF8C15B419250035C505 /* ADResult.h */,
+				D6C4EF9515B41E800035C505 /* ADBlockOperation.h */,
+				D6C4EF9615B41E810035C505 /* ADBlockOperation.m */,
+				D6C4EF9D15B4422F0035C505 /* ADBlockDefs.h */,
+				D67B6CBC15B8364C0020BFC8 /* ADRequest.h */,
+				D6D7B70215C6C986009AD4AD /* ADSession.h */,
+				D6D7B70315C6C986009AD4AD /* ADSession.m */,
+				D62B465215C9756500AE8EC4 /* readme.txt */,
+				D6D7B70115C6C726009AD4AD /* TODO */,
+			);
+			path = AsyncDispatcher;
+			sourceTree = "<group>";
+		};
+		D6C4EF7E15B3FECD0035C505 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6C4EF7F15B3FECD0035C505 /* AsyncDispatcher-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6C4EF8A15B401B70035C505 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D6C4EF8B15B402C90035C505 /* ADExport.h */,
+				D6C4EFA015B458F40035C505 /* ADDispatchQueue.h */,
+				D6C4EFA115B458F50035C505 /* ADDispatchQueue.m */,
+				D6C4EFA315B465070035C505 /* ADOperationMonitor.h */,
+				D6C4EFA415B465070035C505 /* ADOperationMonitor.m */,
+				D66BA31315B6E268008DAEA6 /* ADOperation+Private.h */,
+				D66BA31415B6E269008DAEA6 /* ADOperation+Private.m */,
+				D68CF4EE15BECE5D00660CD6 /* ADMutableCompositeResult.h */,
+				D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */,
+				D68CF58815BFF00700660CD6 /* ADMutableResult.h */,
+				D68CF58915BFF00700660CD6 /* ADMutableResult.m */,
+				D671E37B15C01F9A00F211DF /* ADAtomicDictionary.h */,
+				D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */,
+				D6D7B6FB15C68585009AD4AD /* ADBlockUtils.h */,
+				D6D7B6FC15C68586009AD4AD /* ADBlockUtils.m */,
+				D62B45B515C966BD00AE8EC4 /* ADDispatchArcDefs.h */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		D6580DC515C7DFEC00C23C10 /* Appledoc */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--keep-undocumented-members --keep-undocumented-objects --logformat xcode --exit-threshold 2 --ignore Detail --ignore .m --project-name AsyncDispatcher --project-company \"Embedded Sources\" --company-id com.embeddedsources --no-repeat-first-par --output ./appledoc .";
+			buildConfigurationList = D6580DC815C7DFEC00C23C10 /* Build configuration list for PBXLegacyTarget "Appledoc" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/appledoc;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Appledoc;
+			passBuildSettingsInEnvironment = 1;
+			productName = Appledoc;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		D6C4EF7715B3FECD0035C505 /* AsyncDispatcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6C4EF8615B3FECD0035C505 /* Build configuration list for PBXNativeTarget "AsyncDispatcher" */;
+			buildPhases = (
+				D6C4EF7415B3FECD0035C505 /* Sources */,
+				D6C4EF7515B3FECD0035C505 /* Frameworks */,
+				D6C4EF7615B3FECD0035C505 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AsyncDispatcher;
+			productName = AsyncDispatcher;
+			productReference = D6C4EF7815B3FECD0035C505 /* libAsyncDispatcher.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D6C4EF6F15B3FECD0035C505 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Igor Palaguta";
+			};
+			buildConfigurationList = D6C4EF7215B3FECD0035C505 /* Build configuration list for PBXProject "AsyncDispatcher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D6C4EF6D15B3FECD0035C505;
+			productRefGroup = D6C4EF7915B3FECD0035C505 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D6C4EF7715B3FECD0035C505 /* AsyncDispatcher */,
+				D6580DC515C7DFEC00C23C10 /* Appledoc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D6C4EF7415B3FECD0035C505 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6C4EF9715B41E810035C505 /* ADBlockOperation.m in Sources */,
+				D6C4EFA215B458F50035C505 /* ADDispatchQueue.m in Sources */,
+				D6C4EFA515B465070035C505 /* ADOperationMonitor.m in Sources */,
+				D66BA31515B6E269008DAEA6 /* ADOperation+Private.m in Sources */,
+				D6B66DD515B993BD0035AEB8 /* ADBlockWrappers.m in Sources */,
+				D68CF4F015BECE5E00660CD6 /* ADMutableCompositeResult.m in Sources */,
+				D68CF58A15BFF00800660CD6 /* ADMutableResult.m in Sources */,
+				D671E37D15C01F9B00F211DF /* ADAtomicDictionary.m in Sources */,
+				D6D7B6FD15C68586009AD4AD /* ADBlockUtils.m in Sources */,
+				D6D7B70415C6C987009AD4AD /* ADSession.m in Sources */,
+				D62B457315C8011600AE8EC4 /* ADCompositeOperation.m in Sources */,
+				D62B45B415C9656900AE8EC4 /* ADOperation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D6580DC615C7DFEC00C23C10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LIBRARY = "libc++";
+				DEBUGGING_SYMBOLS = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D6580DC715C7DFEC00C23C10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LIBRARY = "libc++";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D6C4EF8415B3FECD0035C505 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D6C4EF8515B3FECD0035C505 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "NS_BLOCK_ASSERTIONS=1";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D6C4EF8715B3FECD0035C505 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/AsyncDispatcher.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AsyncDispatcher/AsyncDispatcher-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D6C4EF8815B3FECD0035C505 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/AsyncDispatcher.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AsyncDispatcher/AsyncDispatcher-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D6580DC815C7DFEC00C23C10 /* Build configuration list for PBXLegacyTarget "Appledoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6580DC615C7DFEC00C23C10 /* Debug */,
+				D6580DC715C7DFEC00C23C10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6C4EF7215B3FECD0035C505 /* Build configuration list for PBXProject "AsyncDispatcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6C4EF8415B3FECD0035C505 /* Debug */,
+				D6C4EF8515B3FECD0035C505 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6C4EF8615B3FECD0035C505 /* Build configuration list for PBXNativeTarget "AsyncDispatcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6C4EF8715B3FECD0035C505 /* Debug */,
+				D6C4EF8815B3FECD0035C505 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D6C4EF6F15B3FECD0035C505 /* Project object */;
+}
