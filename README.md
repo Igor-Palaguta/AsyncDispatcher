@@ -54,10 +54,12 @@ Sample:
     [ operation_ async ];
 
 *   *ADSequence* - composite asynchronous operation that executes all operations sequentially.
+
 All operations will be executed in predefined order.
 Can include any type of asynchronous operation as block operation or composite operation.
 
 *   *ADConcurrent* - composite asynchronous operation that executes all operations concurrently.
+
 All operations will be executed in any order.
 Can include any type of asynchronous operation as block operation or composite operation.
 
@@ -67,9 +69,12 @@ Sample:
     
     [ sequence_ async ];
 
-*   *ADRequest* - is returned by async call. Is useful for managing operation. Supports wait, waitForTimeInterval, cancel methods
+*   *ADRequest* - is returned by async call. Is useful for managing operation. Supports wait, waitForTimeInterval, cancel methods.
+
 Cancel can stop operation if it is not yet pushed to queue.
+
 If block operation is cancelled when it is in progress, result of worker block with isCancelled flag is returned. Worker block is not executed at all if operation is not in queue, result of this operation will be {result: nil, error: nil, isCancelled: YES }.
+
 If composite operation is cancelled, all active operations will be completed with cancel flag in result. And all operations that were not yet pushed to queue will have {result: nil, error: nil, isCancelled: YES } as result
 
 Sample:
