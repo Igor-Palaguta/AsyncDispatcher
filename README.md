@@ -82,7 +82,7 @@ Sample:
 *   *ADCompositeResult* - result of composite operation. resultForName: - returns result of operation by name.
 If operation without name, result is not saved to ADCompositeResult. resultForName: can return another composite result. This operation does not work recursively.
 
-*   *ADDoneOnMainThread (ADTransfromOnMainThread)* - functions that create done block (transform block) to block that is executed on main thread
+*   *ADDoneOnMainThread (ADTransfromOnMainThread)* - functions that create done block (transform block) that is executed on main thread
 
 *   *ADSession* - provides mechanism for cancel all active asynchronous requests
 
