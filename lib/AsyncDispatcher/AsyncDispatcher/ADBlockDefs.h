@@ -4,6 +4,7 @@
 @protocol ADMutableResult;
 
 /** Type for worker block from ADBlockOperation
+ @return result of operation or nil in case of error
  */
 typedef id (^ADWorkerBlock)( NSError** error_ );
 
