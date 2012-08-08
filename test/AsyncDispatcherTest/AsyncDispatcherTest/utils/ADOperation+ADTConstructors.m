@@ -69,7 +69,7 @@ ADTDelayFunction ADTReverseDelay(void)
       return [ NSNumber numberWithInteger: index_ ];
    };
 
-   ADBlockOperation* operation_ = [ [ self alloc ] initWithWorker: worker_ name: name_ ];
+   ADBlockOperation* operation_ = [ [ self alloc ] initWithName: name_ worker: worker_ ];
    operation_.doneBlock = done_block_;
 
    return operation_;
@@ -87,7 +87,7 @@ ADTDelayFunction ADTReverseDelay(void)
       return nil;
    };
 
-   ADBlockOperation* operation_ = [ [ self alloc ] initWithWorker: worker_ name: name_ ];
+   ADBlockOperation* operation_ = [ [ self alloc ] initWithName: name_ worker: worker_ ];
    operation_.doneBlock = done_block_;
    return operation_;
 }
@@ -100,8 +100,8 @@ ADTDelayFunction ADTReverseDelay(void)
                         name:( NSString* )name_
                    doneBlock:( ADDoneBlock )done_block_
 {
-   ADCompositeOperation* operation_ = [ [ self alloc ] initWithOperations: operations_
-                                                                     name: name_ ];
+   ADCompositeOperation* operation_ = [ [ self alloc ] initWithName: name_
+                                                         operations: operations_ ];
 
    operation_.doneBlock = done_block_;
 
