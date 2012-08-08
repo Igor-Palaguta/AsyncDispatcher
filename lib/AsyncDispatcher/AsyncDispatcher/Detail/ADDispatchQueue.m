@@ -15,8 +15,18 @@
 @implementation ADDispatchQueue
 
 @synthesize name;
+@synthesize priority = _priority;
 @synthesize isConcurrent;
 @synthesize queue = _queue;
+
+-(void)setPriority:( ADOperationPriority )priority_
+{
+   if ( _priority != priority_ )
+   {
+      dispatch_set_target_queue( self.queue, dispatch_get_global_queue( priority_, 0 ) );
+      _priority = priority_;
+   }
+}
 
 -(id)initWithName:( NSString* )name_ concurrent:( BOOL )concurrent_
 {

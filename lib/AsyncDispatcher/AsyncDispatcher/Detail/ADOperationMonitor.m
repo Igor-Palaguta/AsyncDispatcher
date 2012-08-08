@@ -1,5 +1,7 @@
 #import "ADOperationMonitor.h"
 
+#import "ADTimeConversion.h"
+
 @interface ADOperationMonitor ()
 
 @property ( nonatomic, AD_DISPATCH_PROPERTY ) dispatch_group_t group;
@@ -49,7 +51,7 @@
 
 -(BOOL)waitForTimeInterval:( NSTimeInterval )seconds_
 {
-   return [ self waitForDispatchTime: dispatch_time( DISPATCH_TIME_NOW, seconds_ * NSEC_PER_SEC ) ];
+   return [ self waitForDispatchTime: ADDispatchTimeSinceNow( seconds_ ) ];
 }
 
 -(void)cancel

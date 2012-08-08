@@ -1,6 +1,8 @@
 #import "../ADOperation.h"
 #import "../ADBlockDefs.h"
 
+#import <Foundation/Foundation.h>
+
 @protocol ADRequest;
 
 @class ADDispatchQueue;
@@ -8,12 +10,12 @@
 
 @interface ADOperation (Private)
 
--(ADQueueBlock)queueBlockForRequest:( id< ADRequest > )request_
-                          doneBlock:( ADDoneBlock )client_done_block_;
+-(ADQueueBlock)calculateBlockForRequest:( id< ADRequest > )request_
+                              doneBlock:( ADDoneBlock )client_done_block_;
 
--(ADQueueBlock)queueBlockForRequest:( id< ADRequest > )request_
-                          doneBlock:( ADDoneBlock )client_done_block_
-                            context:( id )context_;
+-(ADQueueBlock)calculateBlockForRequest:( id< ADRequest > )request_
+                              doneBlock:( ADDoneBlock )client_done_block_
+                                context:( id )context_;
 
 //Caller done block can be used when caller want to know when process is completed
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_;

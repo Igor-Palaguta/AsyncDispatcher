@@ -1,5 +1,7 @@
 #import "ADOperation+Private.h"
 
+#import "ADDispatchQueue.h"
+
 #import "ADResult.h"
 #import "ADRequest.h"
 #import "ADBlockWrappers.h"
@@ -80,9 +82,9 @@
    };
 }
 
--(void)sendResult:( id< ADMutableResult > )result_
-    withDoneBlock:( ADDoneBlock )done_block_
-       forRequest:( id< ADRequest > )request_
+-(void)processResult:( id< ADMutableResult > )result_
+       withDoneBlock:( ADDoneBlock )done_block_
+          forRequest:( id< ADRequest > )request_
 {
    if ( self.transformBlock )
    {
@@ -96,33 +98,32 @@
    }
 }
 
--(ADQueueBlock)queueBlockForRequest:( id< ADRequest > )request_
+-(ADQueueBlock)calculateBlockForRequest:( id< ADRequest > )request_
                           doneBlock:( ADDoneBlock )client_done_block_
 {
-   return [ self queueBlockForRequest: request_
-                            doneBlock: client_done_block_
-                              context: nil ];
+   return [ self calculateBlockForRequest: request_
+                                doneBlock: client_done_block_
+                                  context: nil ];
 }
 
--(ADQueueBlock)queueBlockForRequest:( id< ADRequest > )request_
-                          doneBlock:( ADDoneBlock )client_done_block_
-                            context:( id )context_
+-(ADQueueBlock)calculateBlockForRequest:( id< ADRequest > )request_
+                              doneBlock:( ADDoneBlock )client_done_block_
+                                context:( id )context_
 {
-   ADDoneBlock done_block_ = ADDoneBlockSum( self.doneBlock, client_done_block_ );
-
    return ^()
    {
       ADMutableResult* result_ = [ self calculateResultForRequest: request_ withContext: context_ ];
 
-      [ self sendResult: result_
-          withDoneBlock: done_block_
-             forRequest: request_ ];
+      [ self processResult: result_
+             withDoneBlock: ADDoneBlockSum( self.doneBlock, client_done_block_ )
+                forRequest: request_ ];
    };
 }
 
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
 {
    ADDispatchQueue* queue_ = [ self createQueue ];
+   queue_.priority = self.priority;
    return [ self asyncWithDoneBlock: done_block_ inQueue: queue_ ];
 }
 
