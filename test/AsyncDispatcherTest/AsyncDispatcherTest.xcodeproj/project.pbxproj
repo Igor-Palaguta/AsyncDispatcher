@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D62B45A815C9280300AE8EC4 /* ADSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B45A715C9280300AE8EC4 /* ADSessionTest.m */; };
-		D62B464F15C971A300AE8EC4 /* ADBlockOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */; };
-		D62B465015C971A300AE8EC4 /* ADConcurrentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38015C025DC00F211DF /* ADConcurrentTest.m */; };
-		D62B465115C971A300AE8EC4 /* ADSequenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38115C025DC00F211DF /* ADSequenceTest.m */; };
+		D651A04215CFB5AF00BE8FD0 /* ADPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */; };
+		D67025C815D256B00058880C /* ADOperationPriorityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C715D256B00058880C /* ADOperationPriorityTest.m */; };
+		D67025C915D295080058880C /* ADBlockOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */; };
+		D67025CA15D295080058880C /* ADConcurrentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38015C025DC00F211DF /* ADConcurrentTest.m */; };
+		D67025CB15D295080058880C /* ADSequenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38115C025DC00F211DF /* ADSequenceTest.m */; };
+		D67025CC15D295080058880C /* ADSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B45A715C9280300AE8EC4 /* ADSessionTest.m */; };
 		D671E38B15C025DC00F211DF /* ADDoneBlockChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38415C025DC00F211DF /* ADDoneBlockChecker.m */; };
 		D671E38C15C025DC00F211DF /* ADOperation+ADTConstructors.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38615C025DC00F211DF /* ADOperation+ADTConstructors.m */; };
 		D6B66DCF15B98E890035AEB8 /* libAsyncDispatcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B66DCC15B98E790035AEB8 /* libAsyncDispatcher.a */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		D62B45A715C9280300AE8EC4 /* ADSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSessionTest.m; sourceTree = "<group>"; };
+		D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPropertyTest.m; sourceTree = "<group>"; };
+		D67025C715D256B00058880C /* ADOperationPriorityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADOperationPriorityTest.m; sourceTree = "<group>"; };
 		D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBlockOperationTest.m; sourceTree = "<group>"; };
 		D671E38015C025DC00F211DF /* ADConcurrentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADConcurrentTest.m; sourceTree = "<group>"; };
 		D671E38115C025DC00F211DF /* ADSequenceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSequenceTest.m; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				D671E38015C025DC00F211DF /* ADConcurrentTest.m */,
 				D671E38115C025DC00F211DF /* ADSequenceTest.m */,
 				D62B45A715C9280300AE8EC4 /* ADSessionTest.m */,
+				D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */,
+				D67025C715D256B00058880C /* ADOperationPriorityTest.m */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -241,10 +247,12 @@
 				D6C4EF5A15B3FE720035C505 /* main.m in Sources */,
 				D671E38B15C025DC00F211DF /* ADDoneBlockChecker.m in Sources */,
 				D671E38C15C025DC00F211DF /* ADOperation+ADTConstructors.m in Sources */,
-				D62B45A815C9280300AE8EC4 /* ADSessionTest.m in Sources */,
-				D62B464F15C971A300AE8EC4 /* ADBlockOperationTest.m in Sources */,
-				D62B465015C971A300AE8EC4 /* ADConcurrentTest.m in Sources */,
-				D62B465115C971A300AE8EC4 /* ADSequenceTest.m in Sources */,
+				D651A04215CFB5AF00BE8FD0 /* ADPropertyTest.m in Sources */,
+				D67025C815D256B00058880C /* ADOperationPriorityTest.m in Sources */,
+				D67025C915D295080058880C /* ADBlockOperationTest.m in Sources */,
+				D67025CA15D295080058880C /* ADConcurrentTest.m in Sources */,
+				D67025CB15D295080058880C /* ADSequenceTest.m in Sources */,
+				D67025CC15D295080058880C /* ADSessionTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
