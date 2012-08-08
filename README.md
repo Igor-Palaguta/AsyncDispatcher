@@ -14,11 +14,9 @@
 #### Basic: ####
 
 *   *ADWorkerBlock* - block that will be executed asynchronously in separate thread
-
-It must return result in case of success or error. Not both at the same time
+It must return result in case of success or error. Not both at the same time.
 
 *   *ADResult* - result of asynchronous operation
-
 Result or error that returned worker block, and cancel flag if operations was cancelled
 
 *   *ADDoneBlock* - block that is called when operation is completed, as parameter it takes id< ADResult >
@@ -28,8 +26,7 @@ Result or error that returned worker block, and cancel flag if operations was ca
 *   *ADTransformBlock* - block that transforms result of operation and then it passes modified result to done block
 
 *   *ADOperation* - base class/protocol for any asynchronous operation
-
-Any operation can have transform block, done block, name
+Any operation can have transform block, done block, name.
 
 *   *ADBlockOperation* - executes worker block asynchronously
 
@@ -56,17 +53,13 @@ Sample:
 
     [ operation_ async ];
 
-*   *ADSequence* - composite asynchronous operation that executes all operations sequentially
-
-All operations will be executed in predefined order
-
-Can include any type of asynchronous operation as block operation or composite operation
+*   *ADSequence* - composite asynchronous operation that executes all operations sequentially.
+All operations will be executed in predefined order.
+Can include any type of asynchronous operation as block operation or composite operation.
 
 *   *ADConcurrent* - composite asynchronous operation that executes all operations concurrently.
-
-All operations will be executed in any order
-
-Can include any type of asynchronous operation as block operation or composite operation
+All operations will be executed in any order.
+Can include any type of asynchronous operation as block operation or composite operation.
 
 Sample:
 
@@ -74,15 +67,9 @@ Sample:
     
     [ sequence_ async ];
 
-*   *ADRequest* - is returned by async call
-
-Is useful for managing operation. Supports wait, waitForTimeInterval, cancel methods
-
-Cancel can stop operation if it is not yet pushed to queue
-
-If block operation is cancelled when it is in progress, worker will be completed, done block will be called with result of worker block and with isCancelled == YES.
-Worker block is not executed at all if operation is not yet in queue, result of this operation will be {result: nil, error: nil, isCancelled: YES }.
-
+*   *ADRequest* - is returned by async call. Is useful for managing operation. Supports wait, waitForTimeInterval, cancel methods
+Cancel can stop operation if it is not yet pushed to queue.
+If block operation is cancelled when it is in progress, result of worker block with isCancelled flag is returned. Worker block is not executed at all if operation is not in queue, result of this operation will be {result: nil, error: nil, isCancelled: YES }.
 If composite operation is cancelled, all active operations will be completed with cancel flag in result. And all operations that were not yet pushed to queue will have {result: nil, error: nil, isCancelled: YES } as result
 
 Sample:
@@ -92,13 +79,10 @@ Sample:
     //...
     [ request_ cancel ];
 
-*   *ADCompositeResult* - result of composite operation. resultForName: - returns result of operation by name
-
+*   *ADCompositeResult* - result of composite operation. resultForName: - returns result of operation by name.
 If operation without name, result is not saved to ADCompositeResult. resultForName: can return another composite result. This operation does not work recursively.
 
 *   *ADDoneOnMainThread (ADTransfromOnMainThread)* - functions that create done block (transform block) that is executed on main thread
-
-If block is wrapped with ADDoneOnMainThread or ADTransfromOnMainThread and [ request_ wait ] is called on main thread is cause to deadlock
 
 *   *ADSession* - provides mechanism for cancel all active asynchronous requests
 
