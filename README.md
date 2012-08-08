@@ -89,3 +89,49 @@ If operation without name, result is not saved to ADCompositeResult. resultForNa
 Sample:
 
     [ [ ADSession sharedSession ] cancelAll ];
+
+*   *NSObject+AsyncKVC* - category for registering done callbacks that are called when async operation is completed
+
+asyncOperationForKey: - should return asynchronous operation for key. [ super asyncOperationForKey: key_ ] constructs method name (e.g for property valueA "asyncOperationForValueA") and calls it
+
+Sample:
+
+	@interface PropertyTester : NSObject
+
+	@property ( nonatomic, strong ) NSString* valueA;
+	@property ( nonatomic, strong ) NSString* valueB;
+
+	@end
+
+	@implementation PropertyTester
+
+	@synthesize valueA;
+	@synthesize valueB;
+
+	-(ADOperation*)asyncOperationForValueA
+	{
+	   //... returns async operation for valueA
+	}
+
+	-(ADOperation*)asyncOperationForKey:( NSString* )key_
+	{
+	   if ( [ key_ isEqualToString: @"valueB" ] )
+	   {
+	      //... returns async operation for valueB
+	   }
+
+	   return [ super asyncOperationForKey: key_ ];
+	}
+
+	@end
+	
+	//Usage
+	PropertyTester* tester_ = [ PropertyTester new ];
+	[ tester_ asyncValueForKey: @"valueA"
+                     doneBlock: done_block1_ ];
+
+	[ tester_ asyncValueForKey: @"valueB"
+                     doneBlock: done_block2_ ];
+
+
+	
