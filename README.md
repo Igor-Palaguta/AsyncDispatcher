@@ -25,6 +25,13 @@ Result or error that returned worker block, and cancel flag if operations was ca
 
 *   *ADTransformBlock* - block that transforms result of operation and then it passes modified result to done block
 
+*   *ADOperationPriority* - defines priority of operation. All children operations inherits parent priority. Possible values:
+
+	* ADOperationPriorityDefault - default priority
+	* ADOperationPriorityLow - low priority
+	* ADOperationPriorityHigh - high priority
+	* ADOperationPriorityBackground - is used for background tasks
+
 *   *ADOperation* - base class/protocol for any asynchronous operation
 Any operation can have transform block, done block, name.
 
@@ -50,6 +57,7 @@ Sample:
     ADBlockOperation* operation_ = [ [ ADBlockOperation alloc ] initWithWorker: worker_ name: @"Any name" ];
     operation_.doneBlock = done_block_;
     operation_.transformBlock = transform_block_;
+    operation_.priority = ADOperationPriorityDefault;
 
     [ operation_ async ];
 
