@@ -2,9 +2,11 @@
 
 #import "ADRequest.h"
 
+#import "Detail/ADAtomicSet.h"
+
 @interface ADSession ()
 
-@property ( nonatomic, strong ) NSMutableSet* mutableRequests;
+@property ( nonatomic, strong ) ADAtomicSet* mutableRequests;
 
 @end
 
@@ -17,7 +19,7 @@
    self = [ super init ];
    if ( self )
    {
-      self.mutableRequests = [ NSMutableSet new ];
+      self.mutableRequests = [ ADAtomicSet new ];
    }
    return self;
 }
@@ -34,26 +36,22 @@
 
 -(NSSet*)requests
 {
-   @synchronized ( self )
-   {
-      return [ self.mutableRequests copy ];
-   }
+   return [ self.mutableRequests set ];
 }
 
 -(void)addRequest:( id< ADRequest > )request_
 {
-   @synchronized ( self )
-   {
-      [ self.mutableRequests addObject: request_ ];
-   }
+   [ self.mutableRequests addObject: request_ ];
 }
 
 -(void)removeRequest:( id< ADRequest > )request_
 {
-   @synchronized ( self )
-   {
-      [ self.mutableRequests removeObject: request_ ];
-   }
+   [ self.mutableRequests removeObject: request_ ];
+}
+
+-(NSUInteger)count
+{
+   return [ self.mutableRequests count ];
 }
 
 -(void)cancelAll
@@ -63,14 +61,6 @@
    for ( id< ADRequest > request_ in requests_ )
    {
       [ request_ cancel ];
-   }
-}
-
--(NSUInteger)count
-{
-   @synchronized ( self )
-   {
-      return [ self.mutableRequests count ];
    }
 }
 

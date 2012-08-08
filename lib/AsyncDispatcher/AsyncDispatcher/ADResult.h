@@ -11,8 +11,10 @@
 -(NSError*)error;
 
 /** Returns indication if request was cancelled.
+ 
  Result can be cancelled when user cancelled request,
  or if in composite operation one of operations failed or finished with error.
+ 
  If request was cancelled when operation was in process result or error can be not nil
  */
 -(BOOL)isCancelled;
@@ -57,6 +59,7 @@
 @protocol ADMutableCompositeResult <ADCompositeResult>
 
 /** Sets result for operation with name
+ 
  If name is nil result is not saved
  @param result_ result of operation
  @param name_ name of operation

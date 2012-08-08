@@ -8,10 +8,10 @@
 @interface ADBlockOperation : ADOperation
 
 /** Returns an initialized ADBlockOperation object
- @param worker_ block that will be executed asynchronously
  @param name_ operation name
+ @param worker_ block that will be executed asynchronously
  */
--(id)initWithWorker:( ADWorkerBlock )worker_
-               name:( NSString* )name_;
+-(id)initWithName:( NSString* )name_
+           worker:( ADWorkerBlock )worker_;
 
 @end

@@ -23,8 +23,8 @@
    return [ ADDispatchQueue serialQueueWithName: self.name ];
 }
 
--(id)initWithWorker:( ADWorkerBlock )worker_
-               name:( NSString* )name_
+-(id)initWithName:( NSString* )name_
+           worker:( ADWorkerBlock )worker_
 {
    self = [ super initWithName: name_ ];
    if ( self )
@@ -42,10 +42,12 @@
       return [ ADMutableResult cancelledResult ];
    }
 
-   NSAssert( self.worker, @"ADBlockOperation::sync self.worker can't be nil" );
+   NSAssert( self.worker, @"self.worker can't be nil" );
 
    NSError* local_error_ = nil;
    id worker_result_ = self.worker( &local_error_ );
+
+   NSAssert( ( local_error_ && !worker_result_ ) || ( !local_error_ && worker_result_ ), @"worker must return result or error" );
 
    return [ [ ADMutableResult alloc ] initWithResult: worker_result_
                                                error: local_error_ ];
@@ -71,10 +73,17 @@
 
    ADDoneBlock done_block_ = ADDoneBlockSum( client_done_block_, ADDoneBlockDecrementMonitor( monitor_ ) );
 
-   ADQueueBlock queue_block_ = [ self queueBlockForRequest: monitor_
-                                                 doneBlock: done_block_ ];
+   ADQueueBlock queue_block_ = [ self calculateBlockForRequest: monitor_
+                                                     doneBlock: done_block_ ];
 
    [ queue_ async: queue_block_ withMonitor: monitor_ ];
+}
+
+-(id)copyWithZone:( NSZone* )zone_
+{
+   ADBlockOperation* copy_ = [ super copyWithZone: zone_ ];
+   copy_.worker = self.worker;
+   return copy_;
 }
 
 @end

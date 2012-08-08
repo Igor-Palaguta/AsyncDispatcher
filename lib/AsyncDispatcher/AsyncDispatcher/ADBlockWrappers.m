@@ -21,6 +21,17 @@ ADDoneBlock ADDoneOnMainThread( ADDoneBlock sync_done_block_ )
    };
 }
 
+ADDoneBlock ADDoneOnBackgroundThread( ADDoneBlock sync_done_block_ )
+{
+   return ^void( id< ADResult > result_ )
+   {
+      dispatch_async( dispatch_get_current_queue(), ^()
+                     {
+                        sync_done_block_( result_ );
+                     });
+   };
+}
+
 ADDoneBlock ADDoneBlockSum( ADDoneBlock first_block_, ADDoneBlock second_block_ )
 {
    if ( !first_block_ && !second_block_ )

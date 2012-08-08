@@ -21,9 +21,9 @@
 @synthesize operations;
 @synthesize concurrent;
 
--(id)initWithOperations:( NSArray* )operations_
-                   name:( NSString* )name_
-             concurrent:( BOOL )concurrent_
+-(id)initWithName:( NSString* )name_
+       operations:( NSArray* )operations_
+       concurrent:( BOOL )concurrent_
 {
    self = [ super initWithName: name_ ];
    if ( self )
@@ -71,7 +71,11 @@
                           withMonitor: monitor_ ];
    }
 
-   [ queue_ reqisterCompleteBlock: [ self queueBlockForRequest: monitor_ doneBlock: done_block_ context: composite_result_ ]
+   ADQueueBlock calculate_block_ = [ self calculateBlockForRequest: monitor_
+                                                         doneBlock: done_block_
+                                                           context: composite_result_ ];
+
+   [ queue_ reqisterCompleteBlock: calculate_block_
                        forMonitor: monitor_ ];
 
    return monitor_;
@@ -110,29 +114,39 @@
    }
 }
 
+-(id)copyWithZone:( NSZone* )zone_
+{
+   ADCompositeOperation* copy_ = [ super copyWithZone: zone_ ];
+   copy_.operations = self.operations;
+   copy_.concurrent = self.isConcurrent;
+   return copy_;
+}
+
 @end
 
 
 @implementation ADSequence
 
--(id)initWithOperations:( NSArray* )operations_
-                   name:( NSString* )name_
+-(id)initWithName:( NSString* )name_
+       operations:( NSArray* )operations_
 {
-   return [ self initWithOperations: operations_
-                               name: name_
-                         concurrent: NO ];
+   return [ self initWithName: name_
+                   operations: operations_
+                   concurrent: NO ];
 }
 
 @end
 
 @implementation ADConcurrent
 
--(id)initWithOperations:( NSArray* )operations_
-                   name:( NSString* )name_
+@synthesize maxConcurrentOperationsCount;
+
+-(id)initWithName:( NSString* )name_
+       operations:( NSArray* )operations_
 {
-   return [ self initWithOperations: operations_
-                               name: name_
-                         concurrent: YES ];
+   return [ self initWithName: name_
+                   operations: operations_
+                   concurrent: YES ];
 }
 
 @end

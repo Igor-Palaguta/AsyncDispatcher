@@ -1,6 +1,7 @@
 #import "ADOperation.h"
 
 #import "ADSession.h"
+#import "ADBlockWrappers.h"
 
 #import "Detail/ADOperation+Private.h"
 
@@ -15,6 +16,7 @@
 @synthesize name;
 @synthesize doneBlock;
 @synthesize transformBlock;
+@synthesize priority;
 
 -(id)initWithName:( NSString* )name_
 {
@@ -44,6 +46,19 @@
    ADSession* session_ = [ ADSession sharedSession ];
 
    return [ self asyncInSession: session_ ];
+}
+
+-(id)copyWithZone:( NSZone* )zone_
+{
+   ADOperation* copy_ = [ [ [ self class ] allocWithZone: zone_ ] initWithName: self.name ];
+   copy_.doneBlock = self.doneBlock;
+   copy_.transformBlock = self.transformBlock;
+   return copy_;
+}
+
+-(void)addFirstDoneBlock:( ADDoneBlock )done_block_
+{
+   self.doneBlock = ADDoneBlockSum( done_block_, self.doneBlock );
 }
 
 @end
