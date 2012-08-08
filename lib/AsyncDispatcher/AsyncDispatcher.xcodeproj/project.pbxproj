@@ -9,7 +9,13 @@
 /* Begin PBXBuildFile section */
 		D62B457315C8011600AE8EC4 /* ADCompositeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B457215C8011500AE8EC4 /* ADCompositeOperation.m */; };
 		D62B45B415C9656900AE8EC4 /* ADOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4EF9815B420940035C505 /* ADOperation.m */; };
+		D651A02F15CC06B300BE8FD0 /* NSObject+AsyncKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A02E15CC06B300BE8FD0 /* NSObject+AsyncKVC.m */; };
+		D651A03215CC070800BE8FD0 /* ADAtomicSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A03115CC070800BE8FD0 /* ADAtomicSet.m */; };
+		D651A04515CFC39400BE8FD0 /* ADOperationSubscribers.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A04415CFC39400BE8FD0 /* ADOperationSubscribers.m */; };
 		D66BA31515B6E269008DAEA6 /* ADOperation+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D66BA31415B6E269008DAEA6 /* ADOperation+Private.m */; };
+		D67025BE15D154530058880C /* ADSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025BD15D154530058880C /* ADSemaphore.m */; };
+		D67025C215D247CF0058880C /* ADTimeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C115D247CE0058880C /* ADTimeConversion.m */; };
+		D67025C515D2535A0058880C /* ADOperationPriority.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C415D253590058880C /* ADOperationPriority.m */; };
 		D671E37D15C01F9B00F211DF /* ADAtomicDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */; };
 		D68CF4F015BECE5E00660CD6 /* ADMutableCompositeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */; };
 		D68CF58A15BFF00800660CD6 /* ADMutableResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF58915BFF00700660CD6 /* ADMutableResult.m */; };
@@ -40,9 +46,21 @@
 		D62B457115C8011400AE8EC4 /* ADCompositeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCompositeOperation.h; sourceTree = "<group>"; };
 		D62B457215C8011500AE8EC4 /* ADCompositeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCompositeOperation.m; sourceTree = "<group>"; };
 		D62B45B515C966BD00AE8EC4 /* ADDispatchArcDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDispatchArcDefs.h; sourceTree = "<group>"; };
-		D62B465215C9756500AE8EC4 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = readme.txt; path = ../readme.txt; sourceTree = "<group>"; };
+		D651A02D15CC06B300BE8FD0 /* NSObject+AsyncKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AsyncKVC.h"; sourceTree = "<group>"; };
+		D651A02E15CC06B300BE8FD0 /* NSObject+AsyncKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AsyncKVC.m"; sourceTree = "<group>"; };
+		D651A03015CC070800BE8FD0 /* ADAtomicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAtomicSet.h; sourceTree = "<group>"; };
+		D651A03115CC070800BE8FD0 /* ADAtomicSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAtomicSet.m; sourceTree = "<group>"; };
+		D651A04315CFC39400BE8FD0 /* ADOperationSubscribers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADOperationSubscribers.h; sourceTree = "<group>"; };
+		D651A04415CFC39400BE8FD0 /* ADOperationSubscribers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADOperationSubscribers.m; sourceTree = "<group>"; };
 		D66BA31315B6E268008DAEA6 /* ADOperation+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ADOperation+Private.h"; sourceTree = "<group>"; };
 		D66BA31415B6E269008DAEA6 /* ADOperation+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ADOperation+Private.m"; sourceTree = "<group>"; };
+		D67025BC15D154530058880C /* ADSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSemaphore.h; sourceTree = "<group>"; };
+		D67025BD15D154530058880C /* ADSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSemaphore.m; sourceTree = "<group>"; };
+		D67025C015D247CD0058880C /* ADTimeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTimeConversion.h; sourceTree = "<group>"; };
+		D67025C115D247CE0058880C /* ADTimeConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTimeConversion.m; sourceTree = "<group>"; };
+		D67025C315D253580058880C /* ADOperationPriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADOperationPriority.h; sourceTree = "<group>"; };
+		D67025C415D253590058880C /* ADOperationPriority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADOperationPriority.m; sourceTree = "<group>"; };
+		D67025CD15D29AC20058880C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		D671E37B15C01F9A00F211DF /* ADAtomicDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAtomicDictionary.h; sourceTree = "<group>"; };
 		D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAtomicDictionary.m; sourceTree = "<group>"; };
 		D67B6CBC15B8364C0020BFC8 /* ADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADRequest.h; sourceTree = "<group>"; };
@@ -89,6 +107,7 @@
 		D6C4EF6D15B3FECD0035C505 = {
 			isa = PBXGroup;
 			children = (
+				D67025CD15D29AC20058880C /* README.md */,
 				D6C4EF7D15B3FECD0035C505 /* AsyncDispatcher */,
 				D6C4EF7A15B3FECD0035C505 /* Frameworks */,
 				D6C4EF7915B3FECD0035C505 /* Products */,
@@ -130,7 +149,10 @@
 				D67B6CBC15B8364C0020BFC8 /* ADRequest.h */,
 				D6D7B70215C6C986009AD4AD /* ADSession.h */,
 				D6D7B70315C6C986009AD4AD /* ADSession.m */,
-				D62B465215C9756500AE8EC4 /* readme.txt */,
+				D651A02D15CC06B300BE8FD0 /* NSObject+AsyncKVC.h */,
+				D651A02E15CC06B300BE8FD0 /* NSObject+AsyncKVC.m */,
+				D67025C315D253580058880C /* ADOperationPriority.h */,
+				D67025C415D253590058880C /* ADOperationPriority.m */,
 				D6D7B70115C6C726009AD4AD /* TODO */,
 			);
 			path = AsyncDispatcher;
@@ -158,11 +180,19 @@
 				D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */,
 				D68CF58815BFF00700660CD6 /* ADMutableResult.h */,
 				D68CF58915BFF00700660CD6 /* ADMutableResult.m */,
-				D671E37B15C01F9A00F211DF /* ADAtomicDictionary.h */,
-				D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */,
 				D6D7B6FB15C68585009AD4AD /* ADBlockUtils.h */,
 				D6D7B6FC15C68586009AD4AD /* ADBlockUtils.m */,
 				D62B45B515C966BD00AE8EC4 /* ADDispatchArcDefs.h */,
+				D671E37B15C01F9A00F211DF /* ADAtomicDictionary.h */,
+				D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */,
+				D651A03015CC070800BE8FD0 /* ADAtomicSet.h */,
+				D651A03115CC070800BE8FD0 /* ADAtomicSet.m */,
+				D651A04315CFC39400BE8FD0 /* ADOperationSubscribers.h */,
+				D651A04415CFC39400BE8FD0 /* ADOperationSubscribers.m */,
+				D67025BC15D154530058880C /* ADSemaphore.h */,
+				D67025BD15D154530058880C /* ADSemaphore.m */,
+				D67025C015D247CD0058880C /* ADTimeConversion.h */,
+				D67025C115D247CE0058880C /* ADTimeConversion.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -248,6 +278,12 @@
 				D6D7B70415C6C987009AD4AD /* ADSession.m in Sources */,
 				D62B457315C8011600AE8EC4 /* ADCompositeOperation.m in Sources */,
 				D62B45B415C9656900AE8EC4 /* ADOperation.m in Sources */,
+				D651A02F15CC06B300BE8FD0 /* NSObject+AsyncKVC.m in Sources */,
+				D651A03215CC070800BE8FD0 /* ADAtomicSet.m in Sources */,
+				D651A04515CFC39400BE8FD0 /* ADOperationSubscribers.m in Sources */,
+				D67025BE15D154530058880C /* ADSemaphore.m in Sources */,
+				D67025C215D247CF0058880C /* ADTimeConversion.m in Sources */,
+				D67025C515D2535A0058880C /* ADOperationPriority.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
