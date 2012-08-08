@@ -28,6 +28,27 @@
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
 }
 
+-(void)testCopy
+{
+   [ self prepare ];
+   
+   __block NSInteger recent_counter_ = 0;
+   
+   NSRange operations_range_ = NSMakeRange( 0, 15 );
+   
+   //{0..14}
+   ADSequence* sequence_ = [ ADSequence compositeWithOperations: [ NSArray arrayWithOperationsFromRange: operations_range_
+                                                                                              doneBlock: ADT_CHECK_AND_INCREMENT_COUNT( recent_counter_ ) ]
+                                                           name: @"global"
+                                                      doneBlock: ADT_CHECK_TOTAL_COUNT( recent_counter_, NSMaxRange( operations_range_ ) ) ];
+
+   ADSequence* sequence_copy_ = [ sequence_ copy ];
+
+   [ sequence_copy_ async ];
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+}
+
 -(void)testSequenceOfSequences
 {
    [ self prepare ];

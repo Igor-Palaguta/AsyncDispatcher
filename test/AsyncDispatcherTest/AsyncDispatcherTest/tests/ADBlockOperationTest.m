@@ -16,11 +16,11 @@
 
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: ADT_CHECK_RESULT( [ NSNumber numberWithInteger: 7 ] )
-                                                                  delay: 2 ];
+                                                                  delay: 1.0 ];
 
    [ operation_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 3.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
 }
 
 -(void)testDoneOnMainThread
@@ -29,12 +29,26 @@
    
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: ADDoneOnMainThread( ADCheckResultOnMainThread( ADNotifySuccess( nil, self, _cmd ), [ NSNumber numberWithInteger: 7 ] ) )
-                                                                  delay: 2 ];
+                                                                  delay: 1.0 ];
 
    [ operation_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 3.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
 }
+
+-(void)testDoneOnBackground
+{
+   [ self prepare ];
+   
+   ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
+                                                              doneBlock: ADDoneOnBackgroundThread( ADCheckResultOnBackgroundThread( ADNotifySuccess( nil, self, _cmd ), [ NSNumber numberWithInteger: 7 ] ) )
+                                                                  delay: 1.0 ];
+   
+   [ operation_ async ];
+   
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+}
+
 
 -(void)testTransformBlock
 {
@@ -45,12 +59,34 @@
 
    operation_.transformBlock = ^void( id< ADMutableResult > result_ )
    {
-      GHAssertTrue( ![ NSThread isMainThread ], @"Should be main thread" );
+      GHAssertTrue( ![ NSThread isMainThread ], @"Should not be main thread" );
       
       result_.result = [ NSNumber numberWithInteger: [ result_.result intValue ] * 8 ];
    };
 
    [ operation_ async ];
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+}
+
+-(void)testCopy
+{
+   [ self prepare ];
+   
+   ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
+                                                              doneBlock: ADT_CHECK_RESULT( [ NSNumber numberWithInteger: 56 ] ) ];
+
+   operation_.transformBlock = ^void( id< ADMutableResult > result_ )
+   {
+      GHAssertTrue( ![ NSThread isMainThread ], @"Should not be main thread" );
+
+      result_.result = [ NSNumber numberWithInteger: [ result_.result intValue ] * 8 ];
+   };
+
+   ADBlockOperation* operation_copy_ = [ operation_ copy ];
+   GHAssertTrue( [ operation_.name isEqualToString: operation_copy_.name ], @"Names of initial operation and copy should be equal" );
+
+   [ operation_copy_ async ];
 
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
 }
@@ -88,7 +124,7 @@
 
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: done_block_
-                                                                  delay: 2 ];
+                                                                  delay: 2.0 ];
 
    operation_.transformBlock = ^void( id< ADMutableResult > result_ )
    {
