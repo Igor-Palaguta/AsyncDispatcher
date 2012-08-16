@@ -81,7 +81,7 @@ ADTDelayFunction ADTReverseDelay(void)
 {
    ADWorkerBlock worker_ = ^id( NSError** error_ )
    {
-      *error_ = [ NSError errorWithDomain: @"com.epam.AsyncDispatcherTest"
+      *error_ = [ NSError errorWithDomain: @"com.AsyncDispatcherTest"
                                      code: 0
                                  userInfo: [ NSDictionary dictionaryWithObject: description_ forKey: NSLocalizedDescriptionKey ] ];
       return nil;

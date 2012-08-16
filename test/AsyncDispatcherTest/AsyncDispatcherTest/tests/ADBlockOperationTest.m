@@ -33,7 +33,7 @@
 
    [ operation_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
 }
 
 -(void)testDoneOnBackground

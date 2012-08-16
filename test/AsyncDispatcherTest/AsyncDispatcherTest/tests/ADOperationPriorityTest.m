@@ -20,7 +20,7 @@
          result_ += i_;
       }
       
-      NSTimeInterval time_spent_ = [ now_ timeIntervalSinceNow ];
+      NSTimeInterval time_spent_ = -[ now_ timeIntervalSinceNow ];
       return [ NSNumber numberWithDouble: time_spent_ ];
    };
 
