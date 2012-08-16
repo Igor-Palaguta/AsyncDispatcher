@@ -8,3 +8,6 @@
 #import <AsyncDispatcher/ADRequest.h>
 #import <AsyncDispatcher/ADSession.h>
 #import <AsyncDispatcher/NSObject+AsyncKVC.h>
+#import <AsyncDispatcher/ADStream.h>
+#import <AsyncDispatcher/ADFileStream.h>
+#import <AsyncDispatcher/ADBuffer.h>

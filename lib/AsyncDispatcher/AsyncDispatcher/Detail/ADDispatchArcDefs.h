@@ -11,7 +11,7 @@
 
 #else
 
-#define AD_DISPATCH_RETAIN(object_) dispatch_retain(object_)
+#define AD_DISPATCH_RETAIN(object_) if (object_) dispatch_retain(object_)
 #define AD_DISPATCH_RELEASE(object_) if (object_) dispatch_release(object_)
 #define AD_DISPATCH_PROPERTY assign
 
