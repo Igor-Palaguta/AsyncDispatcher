@@ -2,8 +2,6 @@
 
 #import "ADOperationMonitor.h"
 
-#import "ADDispatchArcDefs.h"
-
 @interface ADDispatchQueue ()
 
 @property ( nonatomic, strong ) NSString* name;
@@ -59,7 +57,10 @@
    if ( self.isConcurrent )
    {
       //return dispatch_queue_create( [ self.name UTF8String ], DISPATCH_QUEUE_CONCURRENT );
-      return dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT , 0 );
+      dispatch_queue_t global_queue_ = dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT , 0 );
+      //is done just for clarification, release and retain are ignored for global queue
+      AD_DISPATCH_RETAIN( global_queue_ );
+      return global_queue_;
    }
 
    return dispatch_queue_create( [ self.name UTF8String ], DISPATCH_QUEUE_SERIAL );
@@ -70,7 +71,6 @@
    if ( !_queue )
    {
       _queue = [ self createQueue ];
-      AD_DISPATCH_RETAIN( _queue );
    }
    return _queue;
 }

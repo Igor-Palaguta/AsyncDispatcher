@@ -1,9 +1,13 @@
 #import "../ADBlockDefs.h"
 #import "../ADOperationPriority.h"
 
+#import "ADDispatchArcDefs.h"
+
 #import <Foundation/Foundation.h>
 
 @interface ADDispatchQueue : NSObject
+
+@property ( nonatomic, AD_DISPATCH_PROPERTY, readonly ) dispatch_queue_t queue;
 
 @property ( nonatomic, assign, readonly ) BOOL isConcurrent;
 @property ( nonatomic, assign ) ADOperationPriority priority;

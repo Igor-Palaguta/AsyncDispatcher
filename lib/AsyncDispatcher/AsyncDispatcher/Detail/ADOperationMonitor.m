@@ -24,7 +24,6 @@
    if ( !_group )
    {
       _group = dispatch_group_create();
-      AD_DISPATCH_RETAIN( _group );
    }
    return _group;
 }

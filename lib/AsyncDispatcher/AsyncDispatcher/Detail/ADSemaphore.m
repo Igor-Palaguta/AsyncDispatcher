@@ -25,7 +25,6 @@
    if ( self )
    {
       self.semaphore = dispatch_semaphore_create( value_ );
-      AD_DISPATCH_RETAIN( self.semaphore );
    }
    return self;
 }
