@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D651A04215CFB5AF00BE8FD0 /* ADPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */; };
-		D67025C815D256B00058880C /* ADOperationPriorityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C715D256B00058880C /* ADOperationPriorityTest.m */; };
-		D67025C915D295080058880C /* ADBlockOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */; };
-		D67025CA15D295080058880C /* ADConcurrentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38015C025DC00F211DF /* ADConcurrentTest.m */; };
-		D67025CB15D295080058880C /* ADSequenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38115C025DC00F211DF /* ADSequenceTest.m */; };
-		D67025CC15D295080058880C /* ADSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B45A715C9280300AE8EC4 /* ADSessionTest.m */; };
 		D671E38B15C025DC00F211DF /* ADDoneBlockChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38415C025DC00F211DF /* ADDoneBlockChecker.m */; };
 		D671E38C15C025DC00F211DF /* ADOperation+ADTConstructors.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38615C025DC00F211DF /* ADOperation+ADTConstructors.m */; };
+		D681423A15DBEA6600C7EFE7 /* ADAsyncFileReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABD615DA909000A2AE77 /* ADAsyncFileReaderTest.m */; };
+		D69BABE115DA9B0200A2AE77 /* big.xdxf in Resources */ = {isa = PBXBuildFile; fileRef = D69BABDF15DA9B0200A2AE77 /* big.xdxf */; };
+		D69BABE215DA9B0200A2AE77 /* medium.xdxf in Resources */ = {isa = PBXBuildFile; fileRef = D69BABE015DA9B0200A2AE77 /* medium.xdxf */; };
+		D69BABE415DA9B1900A2AE77 /* small.xdxf in Resources */ = {isa = PBXBuildFile; fileRef = D69BABE315DA9B1900A2AE77 /* small.xdxf */; };
 		D6B66DCF15B98E890035AEB8 /* libAsyncDispatcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B66DCC15B98E790035AEB8 /* libAsyncDispatcher.a */; };
 		D6B66DD115B98E920035AEB8 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B66DD015B98E920035AEB8 /* GHUnitIOS.framework */; };
 		D6C4EF4E15B3FE720035C505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF4D15B3FE720035C505 /* UIKit.framework */; };
@@ -22,9 +20,22 @@
 		D6C4EF5215B3FE720035C505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF5115B3FE720035C505 /* CoreGraphics.framework */; };
 		D6C4EF5815B3FE720035C505 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C4EF5615B3FE720035C505 /* InfoPlist.strings */; };
 		D6C4EF5A15B3FE720035C505 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4EF5915B3FE720035C505 /* main.m */; };
+		D6D9774D15DAC7260082AEA9 /* ADBlockOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */; };
+		D6D9774E15DAC7260082AEA9 /* ADConcurrentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38015C025DC00F211DF /* ADConcurrentTest.m */; };
+		D6D9774F15DAC7260082AEA9 /* ADSequenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38115C025DC00F211DF /* ADSequenceTest.m */; };
+		D6D9775015DAC7260082AEA9 /* ADSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B45A715C9280300AE8EC4 /* ADSessionTest.m */; };
+		D6D9775115DAC7260082AEA9 /* ADPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */; };
+		D6D9775215DAC7260082AEA9 /* ADOperationPriorityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C715D256B00058880C /* ADOperationPriorityTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D681423715DBE5BB00C7EFE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6B66DC415B98E790035AEB8 /* AsyncDispatcher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6D9781815DBA8F90082AEA9;
+			remoteInfo = AsyncSaxParser;
+		};
 		D6B66DCB15B98E790035AEB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D6B66DC415B98E790035AEB8 /* AsyncDispatcher.xcodeproj */;
@@ -53,6 +64,10 @@
 		D671E38515C025DC00F211DF /* ADOperation+ADTConstructors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ADOperation+ADTConstructors.h"; sourceTree = "<group>"; };
 		D671E38615C025DC00F211DF /* ADOperation+ADTConstructors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ADOperation+ADTConstructors.m"; sourceTree = "<group>"; };
 		D671E38715C025DC00F211DF /* ADTMacroses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTMacroses.h; sourceTree = "<group>"; };
+		D69BABD615DA909000A2AE77 /* ADAsyncFileReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAsyncFileReaderTest.m; sourceTree = "<group>"; };
+		D69BABDF15DA9B0200A2AE77 /* big.xdxf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = big.xdxf; sourceTree = "<group>"; };
+		D69BABE015DA9B0200A2AE77 /* medium.xdxf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = medium.xdxf; sourceTree = "<group>"; };
+		D69BABE315DA9B1900A2AE77 /* small.xdxf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = small.xdxf; sourceTree = "<group>"; };
 		D6B66DC415B98E790035AEB8 /* AsyncDispatcher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AsyncDispatcher.xcodeproj; path = ../../lib/AsyncDispatcher/AsyncDispatcher.xcodeproj; sourceTree = "<group>"; };
 		D6B66DD015B98E920035AEB8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../../../../framework/GHUnitIOS.framework; sourceTree = "<group>"; };
 		D6C4EF4915B3FE720035C505 /* AsyncDispatcherTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncDispatcherTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +105,7 @@
 				D62B45A715C9280300AE8EC4 /* ADSessionTest.m */,
 				D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */,
 				D67025C715D256B00058880C /* ADOperationPriorityTest.m */,
+				D69BABD615DA909000A2AE77 /* ADAsyncFileReaderTest.m */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -106,10 +122,21 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		D69BABDE15DA9B0100A2AE77 /* files */ = {
+			isa = PBXGroup;
+			children = (
+				D69BABE315DA9B1900A2AE77 /* small.xdxf */,
+				D69BABDF15DA9B0200A2AE77 /* big.xdxf */,
+				D69BABE015DA9B0200A2AE77 /* medium.xdxf */,
+			);
+			path = files;
+			sourceTree = "<group>";
+		};
 		D6B66DC515B98E790035AEB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				D6B66DCC15B98E790035AEB8 /* libAsyncDispatcher.a */,
+				D681423815DBE5BB00C7EFE7 /* libAsyncSaxParser.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +173,7 @@
 		D6C4EF5315B3FE720035C505 /* AsyncDispatcherTest */ = {
 			isa = PBXGroup;
 			children = (
+				D69BABDE15DA9B0100A2AE77 /* files */,
 				D671E37E15C025DC00F211DF /* tests */,
 				D671E38215C025DC00F211DF /* utils */,
 				D6C4EF5415B3FE720035C505 /* Supporting Files */,
@@ -219,6 +247,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		D681423815DBE5BB00C7EFE7 /* libAsyncSaxParser.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAsyncSaxParser.a;
+			remoteRef = D681423715DBE5BB00C7EFE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D6B66DCC15B98E790035AEB8 /* libAsyncDispatcher.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -234,6 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6C4EF5815B3FE720035C505 /* InfoPlist.strings in Resources */,
+				D69BABE115DA9B0200A2AE77 /* big.xdxf in Resources */,
+				D69BABE215DA9B0200A2AE77 /* medium.xdxf in Resources */,
+				D69BABE415DA9B1900A2AE77 /* small.xdxf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,12 +285,13 @@
 				D6C4EF5A15B3FE720035C505 /* main.m in Sources */,
 				D671E38B15C025DC00F211DF /* ADDoneBlockChecker.m in Sources */,
 				D671E38C15C025DC00F211DF /* ADOperation+ADTConstructors.m in Sources */,
-				D651A04215CFB5AF00BE8FD0 /* ADPropertyTest.m in Sources */,
-				D67025C815D256B00058880C /* ADOperationPriorityTest.m in Sources */,
-				D67025C915D295080058880C /* ADBlockOperationTest.m in Sources */,
-				D67025CA15D295080058880C /* ADConcurrentTest.m in Sources */,
-				D67025CB15D295080058880C /* ADSequenceTest.m in Sources */,
-				D67025CC15D295080058880C /* ADSessionTest.m in Sources */,
+				D6D9774D15DAC7260082AEA9 /* ADBlockOperationTest.m in Sources */,
+				D6D9774E15DAC7260082AEA9 /* ADConcurrentTest.m in Sources */,
+				D6D9774F15DAC7260082AEA9 /* ADSequenceTest.m in Sources */,
+				D6D9775015DAC7260082AEA9 /* ADSessionTest.m in Sources */,
+				D6D9775115DAC7260082AEA9 /* ADPropertyTest.m in Sources */,
+				D6D9775215DAC7260082AEA9 /* ADOperationPriorityTest.m in Sources */,
+				D681423A15DBEA6600C7EFE7 /* ADAsyncFileReaderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../../lib/AsyncDispatcher;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -323,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../../lib/AsyncDispatcher;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

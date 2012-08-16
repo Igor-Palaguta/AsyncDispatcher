@@ -19,6 +19,8 @@
 		D671E37D15C01F9B00F211DF /* ADAtomicDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */; };
 		D68CF4F015BECE5E00660CD6 /* ADMutableCompositeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */; };
 		D68CF58A15BFF00800660CD6 /* ADMutableResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF58915BFF00700660CD6 /* ADMutableResult.m */; };
+		D69BABD315DA872200A2AE77 /* ADFileStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABD215DA872200A2AE77 /* ADFileStream.m */; };
+		D69BABDD15DA94FF00A2AE77 /* ADDispatchData.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABDC15DA94FE00A2AE77 /* ADDispatchData.m */; };
 		D6B66DD515B993BD0035AEB8 /* ADBlockWrappers.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B66DD415B993BD0035AEB8 /* ADBlockWrappers.m */; };
 		D6C4EF7C15B3FECD0035C505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF7B15B3FECD0035C505 /* Foundation.framework */; };
 		D6C4EF8115B3FECD0035C505 /* AsyncDispatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D6C4EF8015B3FECD0035C505 /* AsyncDispatcher.h */; };
@@ -27,7 +29,26 @@
 		D6C4EFA515B465070035C505 /* ADOperationMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C4EFA415B465070035C505 /* ADOperationMonitor.m */; };
 		D6D7B6FD15C68586009AD4AD /* ADBlockUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D7B6FC15C68586009AD4AD /* ADBlockUtils.m */; };
 		D6D7B70415C6C987009AD4AD /* ADSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D7B70315C6C986009AD4AD /* ADSession.m */; };
+		D6D9774B15DAC0E80082AEA9 /* NSError+AsyncDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D9774A15DAC0E80082AEA9 /* NSError+AsyncDispatcher.m */; };
+		D6D9781915DBA8F90082AEA9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF7B15B3FECD0035C505 /* Foundation.framework */; };
+		D6D9781E15DBA8FA0082AEA9 /* AsyncSaxParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D6D9781D15DBA8FA0082AEA9 /* AsyncSaxParser.h */; };
+		D6D9782C15DBAC430082AEA9 /* ADSaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D9782B15DBAC430082AEA9 /* ADSaxParser.m */; };
+		D6D9783015DBB1D60082AEA9 /* ADSaxHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D9782F15DBB1D60082AEA9 /* ADSaxHandler.m */; };
+		D6D9783915DBB4170082AEA9 /* ADSaxHandlerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D9783815DBB4170082AEA9 /* ADSaxHandlerFactory.m */; };
+		D6D9783C15DBB7550082AEA9 /* NSError+LibXml.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D9783B15DBB7550082AEA9 /* NSError+LibXml.m */; };
+		D6D9784715DBE0BA0082AEA9 /* libAsyncDispatcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF7815B3FECD0035C505 /* libAsyncDispatcher.a */; };
+		D6D9784815DBE0C30082AEA9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D9782815DBA9180082AEA9 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D6D9782515DBA9060082AEA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6C4EF6F15B3FECD0035C505 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6C4EF7715B3FECD0035C505;
+			remoteInfo = AsyncDispatcher;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D6C4EF7615B3FECD0035C505 /* CopyFiles */ = {
@@ -37,6 +58,16 @@
 			dstSubfolderSpec = 16;
 			files = (
 				D6C4EF8115B3FECD0035C505 /* AsyncDispatcher.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6D9781615DBA8F90082AEA9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				D6D9781E15DBA8FA0082AEA9 /* AsyncSaxParser.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +99,11 @@
 		D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMutableCompositeResult.m; sourceTree = "<group>"; };
 		D68CF58815BFF00700660CD6 /* ADMutableResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMutableResult.h; sourceTree = "<group>"; };
 		D68CF58915BFF00700660CD6 /* ADMutableResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMutableResult.m; sourceTree = "<group>"; };
+		D69BABD115DA872200A2AE77 /* ADFileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFileStream.h; sourceTree = "<group>"; };
+		D69BABD215DA872200A2AE77 /* ADFileStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFileStream.m; sourceTree = "<group>"; };
+		D69BABD815DA92DE00A2AE77 /* ADBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBuffer.h; sourceTree = "<group>"; };
+		D69BABDB15DA94FE00A2AE77 /* ADDispatchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDispatchData.h; sourceTree = "<group>"; };
+		D69BABDC15DA94FE00A2AE77 /* ADDispatchData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDispatchData.m; sourceTree = "<group>"; };
 		D6B66DD315B993BC0035AEB8 /* ADBlockWrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBlockWrappers.h; sourceTree = "<group>"; };
 		D6B66DD415B993BD0035AEB8 /* ADBlockWrappers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBlockWrappers.m; sourceTree = "<group>"; };
 		D6C4EF7815B3FECD0035C505 /* libAsyncDispatcher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAsyncDispatcher.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +126,21 @@
 		D6D7B70115C6C726009AD4AD /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		D6D7B70215C6C986009AD4AD /* ADSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSession.h; sourceTree = "<group>"; };
 		D6D7B70315C6C986009AD4AD /* ADSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSession.m; sourceTree = "<group>"; };
+		D6D9774915DAC0E80082AEA9 /* NSError+AsyncDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+AsyncDispatcher.h"; sourceTree = "<group>"; };
+		D6D9774A15DAC0E80082AEA9 /* NSError+AsyncDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+AsyncDispatcher.m"; sourceTree = "<group>"; };
+		D6D9781815DBA8F90082AEA9 /* libAsyncSaxParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAsyncSaxParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6D9781C15DBA8FA0082AEA9 /* AsyncSaxParser-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsyncSaxParser-Prefix.pch"; sourceTree = "<group>"; };
+		D6D9781D15DBA8FA0082AEA9 /* AsyncSaxParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncSaxParser.h; sourceTree = "<group>"; };
+		D6D9782815DBA9180082AEA9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		D6D9782A15DBAC430082AEA9 /* ADSaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSaxParser.h; sourceTree = "<group>"; };
+		D6D9782B15DBAC430082AEA9 /* ADSaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSaxParser.m; sourceTree = "<group>"; };
+		D6D9782D15DBAC8C0082AEA9 /* ADSaxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSaxHandler.h; sourceTree = "<group>"; };
+		D6D9782F15DBB1D60082AEA9 /* ADSaxHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSaxHandler.m; sourceTree = "<group>"; };
+		D6D9783715DBB4170082AEA9 /* ADSaxHandlerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSaxHandlerFactory.h; sourceTree = "<group>"; };
+		D6D9783815DBB4170082AEA9 /* ADSaxHandlerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSaxHandlerFactory.m; sourceTree = "<group>"; };
+		D6D9783A15DBB7540082AEA9 /* NSError+LibXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LibXml.h"; sourceTree = "<group>"; };
+		D6D9783B15DBB7550082AEA9 /* NSError+LibXml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LibXml.m"; sourceTree = "<group>"; };
+		D6FF644615DCDD9A00782132 /* ADStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADStream.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +152,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D6D9781515DBA8F90082AEA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6D9784815DBE0C30082AEA9 /* libxml2.dylib in Frameworks */,
+				D6D9784715DBE0BA0082AEA9 /* libAsyncDispatcher.a in Frameworks */,
+				D6D9781915DBA8F90082AEA9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		D6C4EF6D15B3FECD0035C505 = {
 			isa = PBXGroup;
 			children = (
+				D6D9782815DBA9180082AEA9 /* libxml2.dylib */,
 				D67025CD15D29AC20058880C /* README.md */,
 				D6C4EF7D15B3FECD0035C505 /* AsyncDispatcher */,
+				D6D9781A15DBA8F90082AEA9 /* AsyncSaxParser */,
 				D6C4EF7A15B3FECD0035C505 /* Frameworks */,
 				D6C4EF7915B3FECD0035C505 /* Products */,
 			);
@@ -118,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				D6C4EF7815B3FECD0035C505 /* libAsyncDispatcher.a */,
+				D6D9781815DBA8F90082AEA9 /* libAsyncSaxParser.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +217,10 @@
 				D651A02E15CC06B300BE8FD0 /* NSObject+AsyncKVC.m */,
 				D67025C315D253580058880C /* ADOperationPriority.h */,
 				D67025C415D253590058880C /* ADOperationPriority.m */,
+				D6FF644615DCDD9A00782132 /* ADStream.h */,
+				D69BABD115DA872200A2AE77 /* ADFileStream.h */,
+				D69BABD215DA872200A2AE77 /* ADFileStream.m */,
+				D69BABD815DA92DE00A2AE77 /* ADBuffer.h */,
 				D6D7B70115C6C726009AD4AD /* TODO */,
 			);
 			path = AsyncDispatcher;
@@ -193,6 +261,43 @@
 				D67025BD15D154530058880C /* ADSemaphore.m */,
 				D67025C015D247CD0058880C /* ADTimeConversion.h */,
 				D67025C115D247CE0058880C /* ADTimeConversion.m */,
+				D69BABDB15DA94FE00A2AE77 /* ADDispatchData.h */,
+				D69BABDC15DA94FE00A2AE77 /* ADDispatchData.m */,
+				D6D9774915DAC0E80082AEA9 /* NSError+AsyncDispatcher.h */,
+				D6D9774A15DAC0E80082AEA9 /* NSError+AsyncDispatcher.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		D6D9781A15DBA8F90082AEA9 /* AsyncSaxParser */ = {
+			isa = PBXGroup;
+			children = (
+				D6D9781B15DBA8FA0082AEA9 /* Supporting Files */,
+				D6D9783115DBB25C0082AEA9 /* Detail */,
+				D6D9781D15DBA8FA0082AEA9 /* AsyncSaxParser.h */,
+				D6D9782A15DBAC430082AEA9 /* ADSaxParser.h */,
+				D6D9782B15DBAC430082AEA9 /* ADSaxParser.m */,
+				D6D9782D15DBAC8C0082AEA9 /* ADSaxHandler.h */,
+				D6D9782F15DBB1D60082AEA9 /* ADSaxHandler.m */,
+			);
+			path = AsyncSaxParser;
+			sourceTree = "<group>";
+		};
+		D6D9781B15DBA8FA0082AEA9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6D9781C15DBA8FA0082AEA9 /* AsyncSaxParser-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6D9783115DBB25C0082AEA9 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D6D9783A15DBB7540082AEA9 /* NSError+LibXml.h */,
+				D6D9783B15DBB7550082AEA9 /* NSError+LibXml.m */,
+				D6D9783715DBB4170082AEA9 /* ADSaxHandlerFactory.h */,
+				D6D9783815DBB4170082AEA9 /* ADSaxHandlerFactory.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -234,6 +339,24 @@
 			productReference = D6C4EF7815B3FECD0035C505 /* libAsyncDispatcher.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		D6D9781715DBA8F90082AEA9 /* AsyncSaxParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6D9782315DBA8FA0082AEA9 /* Build configuration list for PBXNativeTarget "AsyncSaxParser" */;
+			buildPhases = (
+				D6D9781415DBA8F90082AEA9 /* Sources */,
+				D6D9781515DBA8F90082AEA9 /* Frameworks */,
+				D6D9781615DBA8F90082AEA9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6D9782615DBA9060082AEA9 /* PBXTargetDependency */,
+			);
+			name = AsyncSaxParser;
+			productName = AsyncSaxParser;
+			productReference = D6D9781815DBA8F90082AEA9 /* libAsyncSaxParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -256,6 +379,7 @@
 			projectRoot = "";
 			targets = (
 				D6C4EF7715B3FECD0035C505 /* AsyncDispatcher */,
+				D6D9781715DBA8F90082AEA9 /* AsyncSaxParser */,
 				D6580DC515C7DFEC00C23C10 /* Appledoc */,
 			);
 		};
@@ -284,10 +408,32 @@
 				D67025BE15D154530058880C /* ADSemaphore.m in Sources */,
 				D67025C215D247CF0058880C /* ADTimeConversion.m in Sources */,
 				D67025C515D2535A0058880C /* ADOperationPriority.m in Sources */,
+				D69BABD315DA872200A2AE77 /* ADFileStream.m in Sources */,
+				D69BABDD15DA94FF00A2AE77 /* ADDispatchData.m in Sources */,
+				D6D9774B15DAC0E80082AEA9 /* NSError+AsyncDispatcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6D9781415DBA8F90082AEA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6D9782C15DBAC430082AEA9 /* ADSaxParser.m in Sources */,
+				D6D9783015DBB1D60082AEA9 /* ADSaxHandler.m in Sources */,
+				D6D9783915DBB4170082AEA9 /* ADSaxHandlerFactory.m in Sources */,
+				D6D9783C15DBB7550082AEA9 /* NSError+LibXml.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6D9782615DBA9060082AEA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6C4EF7715B3FECD0035C505 /* AsyncDispatcher */;
+			targetProxy = D6D9782515DBA9060082AEA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D6580DC615C7DFEC00C23C10 /* Debug */ = {
@@ -345,7 +491,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -364,7 +510,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -388,6 +534,40 @@
 				DSTROOT = /tmp/AsyncDispatcher.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AsyncDispatcher/AsyncDispatcher-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D6D9782115DBA8FA0082AEA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				DSTROOT = /tmp/AsyncSaxParser.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AsyncSaxParser/AsyncSaxParser-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					.,
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D6D9782215DBA8FA0082AEA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				DSTROOT = /tmp/AsyncSaxParser.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AsyncSaxParser/AsyncSaxParser-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					.,
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -420,6 +600,15 @@
 			buildConfigurations = (
 				D6C4EF8715B3FECD0035C505 /* Debug */,
 				D6C4EF8815B3FECD0035C505 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6D9782315DBA8FA0082AEA9 /* Build configuration list for PBXNativeTarget "AsyncSaxParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6D9782115DBA8FA0082AEA9 /* Debug */,
+				D6D9782215DBA8FA0082AEA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -2,7 +2,7 @@
 
 *   Based on GCD
 *   Requires XCode >= 4.3 (was tested on 4.3, 4.5)
-*   Deployment target iOS 4.3
+*   Deployment target iOS 5.0
 *   Uses ARC
 
 #### Main Features: ####
