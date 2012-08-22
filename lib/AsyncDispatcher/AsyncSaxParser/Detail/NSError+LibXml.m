@@ -4,13 +4,35 @@ NSString* const ADLibXmlErrorDomain = @"com.AsyncSaxParser.libxml2";
 
 @implementation NSError (LibXml)
 
-+(id)parserErrorWithCode:( int )code_
-             description:( NSString* )description_
++(id)libXmlErrorWithCode:( int )errno_
+             description:( NSString* )error_str_
 {
    return [ self errorWithDomain: ADLibXmlErrorDomain
-                            code: code_
-                        userInfo: [ NSDictionary dictionaryWithObject: description_
+                            code: errno_
+                        userInfo: [ NSDictionary dictionaryWithObject: error_str_
                                                                forKey: NSLocalizedDescriptionKey ] ];
+}
+
++(id)libXmlErrorWithCode:( int )errno_
+            cDescription:( const char* )error_c_str_
+{
+   NSString* error_str_ = error_c_str_
+      ? [ NSString stringWithUTF8String: error_c_str_ ]
+      : [ NSString stringWithFormat: @"Error number: %d", errno_ ];
+
+   return [ self libXmlErrorWithCode: errno_
+                         description: error_str_ ];
+}
+
++(id)errorWithLibXmlFormat:( const char* )format_
+                 arguments:( va_list )arguments_
+{
+   NSString* format_str_ = [ NSString stringWithUTF8String: format_ ];
+   NSString* error_str_ = [ [ NSString alloc ] initWithFormat: format_str_
+                                                    arguments: arguments_ ];
+
+   return [ self libXmlErrorWithCode: ADLibXmlSaxParserError
+                         description: error_str_ ];
 }
 
 +(id)errorWithLibXmlErrno:( int )errno_
@@ -18,19 +40,12 @@ NSString* const ADLibXmlErrorDomain = @"com.AsyncSaxParser.libxml2";
    if ( errno_ == XML_ERR_OK )
       return nil;
 
-   const char* error_c_str_ = 0/*strerror( errno_ )*/;
-   NSString* error_str_ = error_c_str_
-      ? [ NSString stringWithUTF8String: error_c_str_ ]
-      : [ NSString stringWithFormat: @"Error number: %d", errno_ ];
-
-   return [ self parserErrorWithCode: errno_
-                         description: error_str_ ];
+   return [ self libXmlErrorWithCode: errno_ cDescription: 0 ];
 }
 
 +(id)errorWithLibXmlError:( xmlErrorPtr )error_
 {
-   return [ self parserErrorWithCode: error_->code
-                         description: [ NSString stringWithUTF8String: error_->message ] ];
+   return [ self libXmlErrorWithCode: error_->code cDescription: error_->message ];
 }
 
 +(id)errorWithLibXmlLastError

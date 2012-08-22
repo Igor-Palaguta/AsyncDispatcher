@@ -7,6 +7,8 @@
 
 #import "NSError+AsyncDispatcher.h"
 
+#include <fcntl.h>
+
 @interface ADFileStream ()
 
 @property ( nonatomic, strong ) ADDispatchQueue* queue;

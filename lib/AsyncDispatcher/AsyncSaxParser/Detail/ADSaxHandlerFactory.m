@@ -2,7 +2,11 @@
 
 #import "ADSaxHandler.h"
 
-static void	start_element( void* context_
+#import "NSError+LibXml.h"
+
+#include <stdarg.h>
+
+static void start_element( void* context_
                           , const xmlChar* name_
                           , const xmlChar** attributes_ )
 {
@@ -11,7 +15,7 @@ static void	start_element( void* context_
                            attributes: attributes_ ];
 }
 
-static void	end_element( void* context_
+static void end_element( void* context_
                         , const xmlChar* name_ )
 {
    id< ADSaxHandler > handler_ = ( __bridge id< ADSaxHandler > )context_;
@@ -39,6 +43,18 @@ static void end_document( void* context_ )
    [ handler_ didEndDocument ];
 }
 
+static void error( void* context_, const char* format_, ... )
+{
+   va_list arguments_;
+   va_start( arguments_, format_ );
+
+   id< ADSaxHandler > handler_ = ( __bridge id< ADSaxHandler > )context_;
+   [ handler_ didFailWithError: [ NSError errorWithLibXmlFormat: format_
+                                                      arguments: arguments_ ] ];
+
+   va_end( arguments_ );
+}
+
 xmlSAXHandlerPtr ADCreateLibXmlSaxHandler()
 {
    xmlSAXHandlerPtr sax_handler_ = (xmlSAXHandlerPtr)malloc( sizeof( xmlSAXHandler ) );
@@ -50,5 +66,7 @@ xmlSAXHandlerPtr ADCreateLibXmlSaxHandler()
    sax_handler_->characters = character;
    sax_handler_->startDocument = start_document;
    sax_handler_->endDocument = end_document;
+   sax_handler_->error = error;
+
    return sax_handler_;
 }

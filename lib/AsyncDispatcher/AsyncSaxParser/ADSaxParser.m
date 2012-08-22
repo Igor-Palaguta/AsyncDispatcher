@@ -99,7 +99,7 @@
        
        if ( result_ != XML_ERR_OK )
        {
-          local_error_ = [ NSError errorWithLibXmlLastError ];
+          local_error_ = [ NSError errorWithLibXmlErrno: result_ ];
           return NO;
        }
        
@@ -166,30 +166,31 @@
         {
            if ( self.isCancelled )
               return NO;
-           
+
            if ( error_ )
            {
               [ handler_ didFailWithError: error_ ];
               return NO;
            }
-           
+
            NSError* parse_error_ = nil;
            if ( ![ self parseBuffer: buffer_ error: &parse_error_ ] )
            {
-              [ handler_ didFailWithError: error_ ];
+              //Sax Handler will notify about parse error
+              //[ handler_ didFailWithError: parse_error_ ];
               return NO;
            }
-           
+
            if ( eof_ )
            {
               [ handler_ didComplete ];
               [ self endParse ];
               return NO;
            }
-           
+
            return !self.isCancelled;
         }];
-       
+
        return YES;
     }];
 }
