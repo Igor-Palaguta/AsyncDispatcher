@@ -1,47 +1,17 @@
 #import <AsyncSaxParser/AsyncSaxParser.h>
+#import <AsyncDispatcher/AsyncDispatcher.h>
 
-#include <list>
 #include <stack>
-#include <numeric>
 
 typedef std::stack< const ADXMLChar* > element_stack_type;
-typedef std::list< NSString* > buffer_type;
-
-static NSUInteger buffer_length( NSUInteger previous_length_, NSString* data_ )
-{
-   return previous_length_ + [ data_ length ];
-}
-
-static NSMutableString* concat_buffer( NSMutableString* total_string_, NSString* data_ )
-{
-   [ total_string_ appendString: data_ ];
-   return total_string_;
-}
-
-@interface NSString (XmlBuffer)
-
-+(id)stringWithXmlBuffer:( const buffer_type& )buffer_;
-
-@end
-
-@implementation NSString (XmlBuffer)
-
-+(id)stringWithXmlBuffer:( const buffer_type& )buffer_
-{
-   NSUInteger size_ = std::accumulate( buffer_.begin(), buffer_.end(), 0, buffer_length );
-   NSMutableString* result_ = [ NSMutableString stringWithCapacity: size_ ];
-   return std::accumulate( buffer_.begin(), buffer_.end(), result_, concat_buffer );
-}
-
-@end
 
 @interface ADSaxParserTest : GHAsyncTestCase< ADSaxHandler >
 {
 @private
    element_stack_type stack;
-   buffer_type buffer;
 }
 
+@property ( nonatomic, strong ) id< ADMutableBuffer > buffer;
 @property ( nonatomic, assign ) NSUInteger numberOfArticles;
 @property ( nonatomic, strong ) NSString* fullName;
 @property ( nonatomic, strong ) NSString* langFrom;
@@ -54,6 +24,7 @@ static NSMutableString* concat_buffer( NSMutableString* total_string_, NSString*
 
 @implementation ADSaxParserTest
 
+@synthesize buffer;
 @synthesize numberOfArticles;
 @synthesize fullName;
 @synthesize langFrom;
@@ -73,7 +44,6 @@ static NSMutableString* concat_buffer( NSMutableString* total_string_, NSString*
 
 -(void)tearDown
 {
-   self->buffer.clear();
    //self->stack.clear();
 }
 
@@ -151,6 +121,7 @@ static NSMutableString* concat_buffer( NSMutableString* total_string_, NSString*
 -(void)didStartElementWithName:( const ADXMLChar* )name_
                     attributes:( const ADXMLChar** )attributes_
 {
+   self.buffer = nil;
    self->stack.push( name_ );
 
    if ( strcmp( ( const char* )name_, "ar" ) == 0 )
@@ -169,10 +140,9 @@ static NSMutableString* concat_buffer( NSMutableString* total_string_, NSString*
 {
    if ( strcmp( ( const char* )name_, "full_name" ) == 0 )
    {
-      self.fullName = [ [ NSString stringWithXmlBuffer: self->buffer ] stringByTrimmingCharactersInSet: [ NSCharacterSet whitespaceAndNewlineCharacterSet ] ];
+      self.fullName = [ [ self.buffer string ] stringByTrimmingCharactersInSet: [ NSCharacterSet whitespaceAndNewlineCharacterSet ] ];
    }
 
-   self->buffer.clear();
    self->stack.pop();
 }
 
@@ -183,12 +153,16 @@ static NSMutableString* concat_buffer( NSMutableString* total_string_, NSString*
 
    if ( strcmp( current_element_, "full_name" ) == 0 )
    {
-      NSString* data_ = [ [ NSString alloc ] initWithBytesNoCopy: ( void* )characters_
-                                                          length: length_
-                                                        encoding: NSUTF8StringEncoding
-                                                    freeWhenDone: NO ];
-
-      self->buffer.push_back( data_ );
+      if ( self.buffer )
+      {
+         [ self.buffer addBuffer: characters_
+                          length: length_ ];
+      }
+      else
+      {
+         self.buffer = [ [ ADMutableBuffer alloc ] initWithBuffer: characters_
+                                                           length: length_ ];
+      }
    }
 }
 

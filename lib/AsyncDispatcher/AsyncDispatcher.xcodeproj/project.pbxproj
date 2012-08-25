@@ -19,6 +19,7 @@
 		D671E37D15C01F9B00F211DF /* ADAtomicDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */; };
 		D68CF4F015BECE5E00660CD6 /* ADMutableCompositeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */; };
 		D68CF58A15BFF00800660CD6 /* ADMutableResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF58915BFF00700660CD6 /* ADMutableResult.m */; };
+		D697E36315E66C64006D9969 /* ADBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D697E36215E66C64006D9969 /* ADBuffer.mm */; };
 		D69BABD315DA872200A2AE77 /* ADFileStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABD215DA872200A2AE77 /* ADFileStream.m */; };
 		D69BABDD15DA94FF00A2AE77 /* ADDispatchData.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABDC15DA94FE00A2AE77 /* ADDispatchData.m */; };
 		D6B66DD515B993BD0035AEB8 /* ADBlockWrappers.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B66DD415B993BD0035AEB8 /* ADBlockWrappers.m */; };
@@ -100,6 +101,7 @@
 		D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMutableCompositeResult.m; sourceTree = "<group>"; };
 		D68CF58815BFF00700660CD6 /* ADMutableResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMutableResult.h; sourceTree = "<group>"; };
 		D68CF58915BFF00700660CD6 /* ADMutableResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMutableResult.m; sourceTree = "<group>"; };
+		D697E36215E66C64006D9969 /* ADBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ADBuffer.mm; sourceTree = "<group>"; };
 		D69BABD115DA872200A2AE77 /* ADFileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFileStream.h; sourceTree = "<group>"; };
 		D69BABD215DA872200A2AE77 /* ADFileStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFileStream.m; sourceTree = "<group>"; };
 		D69BABD815DA92DE00A2AE77 /* ADBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBuffer.h; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				D69BABD115DA872200A2AE77 /* ADFileStream.h */,
 				D69BABD215DA872200A2AE77 /* ADFileStream.m */,
 				D69BABD815DA92DE00A2AE77 /* ADBuffer.h */,
+				D697E36215E66C64006D9969 /* ADBuffer.mm */,
 				D6D7B70115C6C726009AD4AD /* TODO */,
 			);
 			path = AsyncDispatcher;
@@ -322,7 +325,7 @@
 /* Begin PBXLegacyTarget section */
 		D6580DC515C7DFEC00C23C10 /* Appledoc */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "--keep-undocumented-members --keep-undocumented-objects --logformat xcode --exit-threshold 2 --ignore Detail --ignore .m --project-name AsyncDispatcher --project-company \"Embedded Sources\" --company-id com.embeddedsources --no-repeat-first-par --output ./appledoc .";
+			buildArgumentsString = "--keep-undocumented-members --keep-undocumented-objects --logformat xcode --exit-threshold 2 --ignore Detail --ignore .m --ignore .mm --project-name AsyncDispatcher --project-company \"Embedded Sources\" --company-id com.embeddedsources --no-repeat-first-par --output ./appledoc .";
 			buildConfigurationList = D6580DC815C7DFEC00C23C10 /* Build configuration list for PBXLegacyTarget "Appledoc" */;
 			buildPhases = (
 			);
@@ -426,6 +429,7 @@
 				D69BABD315DA872200A2AE77 /* ADFileStream.m in Sources */,
 				D69BABDD15DA94FF00A2AE77 /* ADDispatchData.m in Sources */,
 				D6D9774B15DAC0E80082AEA9 /* NSError+AsyncDispatcher.m in Sources */,
+				D697E36315E66C64006D9969 /* ADBuffer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
