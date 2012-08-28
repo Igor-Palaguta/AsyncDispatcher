@@ -36,7 +36,7 @@
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
 }
 
--(void)testDoneOnBackground
+-(void)testDoneOnBackgroundThread
 {
    [ self prepare ];
    
@@ -49,6 +49,18 @@
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
 }
 
+-(void)testDoneOnThisThread
+{
+   [ self prepare ];
+   
+   ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
+                                                              doneBlock: ADDoneOnThisThread( ADCheckResultOnThisThread( ADNotifySuccess( nil, self, _cmd ), [ NSNumber numberWithInteger: 7 ] ) )
+                                                                  delay: 1.0 ];
+   
+   [ operation_ async ];
+   
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+}
 
 -(void)testTransformBlock
 {

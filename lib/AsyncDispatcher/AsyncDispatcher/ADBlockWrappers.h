@@ -8,8 +8,14 @@ AD_EXPORT ADDoneBlock ADFilterCancelledResult( ADDoneBlock sync_done_block_ );
 /// Creates new done block, that calls sync_done_block_ on main thread
 AD_EXPORT ADDoneBlock ADDoneOnMainThread( ADDoneBlock sync_done_block_ );
 
+
 /// Creates new done block, that calls sync_done_block_ on background thread
 AD_EXPORT ADDoneBlock ADDoneOnBackgroundThread( ADDoneBlock sync_done_block_ );
+
+
+/// Creates new done block, that calls sync_done_block_ on caller thread
+AD_EXPORT ADDoneBlock ADDoneOnThisThread( ADDoneBlock sync_done_block_ );
+
 
 /// Creates new done block, that calls first_block_ and then first_block_
 AD_EXPORT ADDoneBlock ADDoneBlockSum( ADDoneBlock first_block_, ADDoneBlock second_block_ );

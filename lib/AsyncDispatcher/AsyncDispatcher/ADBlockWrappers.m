@@ -2,6 +2,8 @@
 
 #import "ADResult.h"
 
+#import "Detail/ADDoneBlockPerformer.h"
+
 ADDoneBlock ADFilterCancelledResult( ADDoneBlock sync_done_block_ )
 {
    return ^void( id< ADResult > result_ )
@@ -29,6 +31,18 @@ ADDoneBlock ADDoneOnBackgroundThread( ADDoneBlock sync_done_block_ )
                      {
                         sync_done_block_( result_ );
                      });
+   };
+}
+
+ADDoneBlock ADDoneOnThisThread( ADDoneBlock sync_done_block_ )
+{
+   ADDoneBlockPerformer* performer_ = [ ADDoneBlockPerformer performerForDoneBlock: sync_done_block_ ];
+   NSThread* caller_thread_ = [ NSThread currentThread ];
+
+   return ^void( id< ADResult > result_ )
+   {
+      [ performer_ performOnThread: caller_thread_
+                        withResult: result_ ];
    };
 }
 

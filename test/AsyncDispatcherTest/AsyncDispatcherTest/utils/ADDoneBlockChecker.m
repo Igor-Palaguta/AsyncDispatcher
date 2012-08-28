@@ -64,3 +64,22 @@ ADDoneBlock ADCheckResultOnNotMainThread( ADDoneBlock done_block_, id expected_r
          done_block_( result_ );
    };
 }
+
+ADDoneBlock ADCheckResultOnThisThread( ADDoneBlock done_block_, id expected_result_ )
+{
+   NSThread* caller_thread_ = [ NSThread currentThread ];
+
+   return ^void( id< ADResult > result_ )
+   {
+      assert( [ NSThread currentThread ] == caller_thread_ && "ADCheckResultOnThisThread" );
+
+      if ( ![ expected_result_ isEqual: result_.result ] )
+      {
+         NSLog( @"Check result (%@) with expected result (%@)", result_.result, expected_result_ );
+         assert( 0 );
+      }
+
+      if ( done_block_ )
+         done_block_( result_ );
+   };
+}

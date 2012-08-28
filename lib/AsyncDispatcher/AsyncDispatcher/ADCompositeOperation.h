@@ -29,6 +29,7 @@
  */
 @interface ADConcurrent : ADCompositeOperation
 
+//!TODO
 /** Max count of operation that can be exectuted concurrently including child concurrent operations
  */
 @property ( nonatomic, assign ) NSUInteger maxConcurrentOperationsCount;
