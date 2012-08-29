@@ -124,6 +124,25 @@
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
 }
 
+-(void)testTransformOnFailedResult
+{
+   [ self prepare ];
+
+   ADBlockOperation* operation_ = [ ADBlockOperation operationWithName: @"failed"
+                                                      errorDescription: @"Error description"
+                                                             doneBlock: ADNotifySuccess( nil, self, _cmd ) ];
+
+   operation_.transformBlock = ADNoTransformForFailedResult
+   ( ^void( id< ADMutableResult > result_ )
+    {
+       GHAssertTrue( NO, @"Tranform should not be called for failed result" );
+    } );
+
+   [ operation_ async ];
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+}
+
 -(void)testCancelRequest
 {
    [ self prepare ];

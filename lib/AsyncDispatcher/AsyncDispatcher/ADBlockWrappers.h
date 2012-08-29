@@ -33,6 +33,10 @@ AD_EXPORT ADDoneBlock ADDoneLogResult();
 AD_EXPORT ADTransformBlock ADTransfromOnMainThread( ADTransformBlock sync_transform_block_ );
 
 
+/// Creates new transfrom block, that calls sync_transform_block_ only if request was not failed
+AD_EXPORT ADTransformBlock ADNoTransformForFailedResult( ADTransformBlock sync_transform_block_ );
+
+
 /// Performs asynchronously block on main thread
 AD_EXPORT void ADAsyncOnMainThread( ADQueueBlock block_ );
 

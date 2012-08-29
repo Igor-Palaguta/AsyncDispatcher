@@ -92,6 +92,17 @@ ADTransformBlock ADTransfromOnMainThread( ADTransformBlock sync_transform_block_
    };
 }
 
+ADTransformBlock ADNoTransformForFailedResult( ADTransformBlock sync_transform_block_ )
+{
+   return ^void( id< ADMutableResult > mutable_result_ )
+   {
+      if ( !mutable_result_.error )
+      {
+         sync_transform_block_( mutable_result_ );
+      }
+   };
+}
+
 void ADAsyncOnMainThread( ADQueueBlock block_ )
 {
    dispatch_async( dispatch_get_main_queue(), block_ );
