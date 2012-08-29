@@ -1,3 +1,5 @@
+#import "ADLifeCycle.h"
+
 #import <Foundation/Foundation.h>
 
 @interface ADSemaphore : NSObject
@@ -9,5 +11,10 @@
 -(BOOL)waitForTimeInterval:( NSTimeInterval )seconds_;
 
 -(void)signal;
+
+@end
+
+
+@interface ADSemaphore (ADLifeCycle)< ADLifeCycle >
 
 @end

@@ -1,21 +1,23 @@
 #ifndef AsyncDispatcherTest_ADTestMacroses_h
 #define AsyncDispatcherTest_ADTestMacroses_h
 
+#include <libkern/OSAtomic.h>
+
 #define ADT_CHECK_CANCEL_AND_INCREMENT_COUNT( counter_ ) ^( id< ADResult > result_ ) \
 { \
    GHAssertTrue( result_.isCancelled, @"doneBlock should be cancelled" ); \
-   ++counter_; \
+   OSAtomicIncrement32( &counter_ ); \
 }
 
 #define ADT_INCREMENT_SUCCESS_CANCELLED( success_counter_, cancelled_counter_ ) ^( id< ADResult > result_ ) \
 { \
    if ( result_.isCancelled ) \
    { \
-      ++cancelled_counter_; \
+      OSAtomicIncrement32( &cancelled_counter_ ); \
    } \
    else if ( !result_.error ) \
    { \
-      ++success_counter_; \
+      OSAtomicIncrement32( &success_counter_ ); \
    } \
 }
 
@@ -29,7 +31,7 @@
 #define ADT_CHECK_AND_INCREMENT_COUNT( counter_ ) ^( id< ADResult > result_ ) \
 { \
    GHAssertTrue( counter_ == [ result_.result integerValue ], @"Check counter (%d) with result (%d)", counter_, [ result_.result integerValue ] ); \
-   ++counter_; \
+   OSAtomicIncrement32( &counter_ ); \
 }
 
 #define ADT_CHECK_RESULT( expected_result_ ) ^( id< ADResult > result_ ) \
@@ -43,6 +45,12 @@
    NSLog( @"Result:\n%@", result_ ); \
    GHAssertTrue( counter_ == expected_count_, @"Check counter (%d) with total count (%d)", counter_, expected_count_ ); \
    [ self notify: kGHUnitWaitStatusSuccess forSelector: _cmd ]; \
+}
+
+#define ADT_INCREMENT_COUNT( counter_ ) ^( id< ADResult > result_ ) \
+{ \
+   OSAtomicIncrement32( &counter_ ); \
+   NSLog( @"Counter: %d", counter_ ); \
 }
 
 #endif

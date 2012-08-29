@@ -1,0 +1,6 @@
+#ifndef AsyncDispatcherTest_ADTOperationCounter_h
+#define AsyncDispatcherTest_ADTOperationCounter_h
+
+typedef volatile int32_t ADTOperationCounter;
+
+#endif

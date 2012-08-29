@@ -1,4 +1,5 @@
 #import "ADOperation+ADTConstructors.h"
+#import "ADTOperationCounter.h"
 
 #import <AsyncDispatcher/AsyncDispatcher.h>
 
@@ -12,8 +13,8 @@
 {
    [ self prepare ];
 
-   __block NSUInteger cancelled_ = 0;
-   __block NSUInteger not_cancelled_ = 0;
+   __block ADTOperationCounter cancelled_ = 0;
+   __block ADTOperationCounter not_cancelled_ = 0;
 
    ADSession* session_ = [ ADSession sharedSession ];
    GHAssertTrue( [ session_ count ] == 0, @"Check initial session requests count" );

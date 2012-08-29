@@ -55,3 +55,18 @@
 }
 
 @end
+
+
+@implementation ADSemaphore (ADLifeCycle)
+
+-(void)birth:( ADOperation* )operation_
+{
+   [ self wait ];
+}
+
+-(void)death:( ADOperation* )operation_
+{
+   [ self signal ];
+}
+
+@end

@@ -68,11 +68,12 @@ Can include any type of asynchronous operation as block operation or composite o
 *   *ADConcurrent* - composite asynchronous operation that executes all operations concurrently.
 All operations will be executed in any order.
 Can include any type of asynchronous operation as block operation or composite operation.
+To limit maximum number of concurrent threads maxConcurrentOperationsCount property can be used.
 
 Sample:
 
     ADSequence* sequence_ = [ [ ADSequence alloc ] initWithOperations: @[ operation1_, operation2_ ] name: @"sequence" ];
-    
+
     [ sequence_ async ];
 
 *   *ADRequest* - is returned by async call. Is useful for managing operation. Supports wait, waitForTimeInterval, cancel methods

@@ -1,5 +1,6 @@
 #import "ADOperation+ADTConstructors.h"
 #import "ADTMacroses.h"
+#import "ADTOperationCounter.h"
 
 #import <AsyncDispatcher/AsyncDispatcher.h>
 
@@ -13,7 +14,7 @@
 {
    [ self prepare ];
 
-   __block NSInteger recent_counter_ = 0;
+   __block ADTOperationCounter recent_counter_ = 0;
 
    NSRange operations_range_ = NSMakeRange( 0, 15 );
 
@@ -32,7 +33,7 @@
 {
    [ self prepare ];
    
-   __block NSInteger recent_counter_ = 0;
+   __block ADTOperationCounter recent_counter_ = 0;
    
    NSRange operations_range_ = NSMakeRange( 0, 15 );
    
@@ -53,7 +54,7 @@
 {
    [ self prepare ];
 
-   __block NSInteger recent_counter_ = 0;
+   __block ADTOperationCounter recent_counter_ = 0;
 
    const NSInteger sequence_count_ = 15;
 
@@ -87,7 +88,7 @@
 {
    [ self prepare ];
 
-   __block NSInteger recent_counter_ = 0;
+   __block ADTOperationCounter recent_counter_ = 0;
 
    NSRange operations_range_ = NSMakeRange( 0, 15 );
 
@@ -133,7 +134,7 @@
 
    NSRange operations_range_ = NSMakeRange( 0, 15 );
 
-   __block NSInteger recent_counter_ = 0;
+   __block ADTOperationCounter recent_counter_ = 0;
 
    //{0..14}
    ADSequence* sequence_ = [ ADSequence compositeWithOperations: [ NSArray arrayWithOperationsFromRange: operations_range_
@@ -152,8 +153,8 @@
 {
    NSRange operations_range_ = NSMakeRange( 0, 15 );
    
-   __block NSInteger operations_success_ = 0;
-   __block NSInteger operations_failed_ = 0;
+   __block ADTOperationCounter operations_success_ = 0;
+   __block ADTOperationCounter operations_failed_ = 0;
    NSMutableArray* operations_ = [ NSMutableArray arrayWithOperationsFromRange: operations_range_
                                                                      doneBlock: ADT_INCREMENT_SUCCESS_CANCELLED( operations_success_, operations_failed_ ) ];
 

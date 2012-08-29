@@ -77,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D628642015EE09800055979B /* ADLifeCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLifeCycle.h; sourceTree = "<group>"; };
 		D62B457115C8011400AE8EC4 /* ADCompositeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCompositeOperation.h; sourceTree = "<group>"; };
 		D62B457215C8011500AE8EC4 /* ADCompositeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCompositeOperation.m; sourceTree = "<group>"; };
 		D62B45B515C966BD00AE8EC4 /* ADDispatchArcDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDispatchArcDefs.h; sourceTree = "<group>"; };
@@ -277,6 +278,7 @@
 				D6D9774A15DAC0E80082AEA9 /* NSError+AsyncDispatcher.m */,
 				D6DC68F315EB68DE00288E44 /* ADDoneBlockPerformer.h */,
 				D6DC68F415EB68DE00288E44 /* ADDoneBlockPerformer.m */,
+				D628642015EE09800055979B /* ADLifeCycle.h */,
 			);
 			path = Detail;
 			sourceTree = "<group>";

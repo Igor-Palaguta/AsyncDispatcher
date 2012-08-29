@@ -1,5 +1,6 @@
 #import "ADOperation+ADTConstructors.h"
 #import "ADTMacroses.h"
+#import "ADTOperationCounter.h"
 
 #import <AsyncDispatcher/AsyncDispatcher.h>
 
@@ -13,7 +14,7 @@
 {
    [ self prepare ];
 
-   __block NSInteger operation_index_ = 0;
+   __block ADTOperationCounter operation_index_ = 0;
 
    NSRange operations_range_ = NSMakeRange( 0, 15 );
 
@@ -35,7 +36,7 @@
 {
    [ self prepare ];
    
-   __block NSInteger operation_index_ = 0;
+   __block ADTOperationCounter operation_index_ = 0;
 
    const NSInteger concurrents_count_ = 5;
 
@@ -68,7 +69,7 @@
 {
    [ self prepare ];
 
-   __block NSInteger operation_index_ = 0;
+   __block ADTOperationCounter operation_index_ = 0;
 
    const NSInteger sequence_count_ = 3;
 
@@ -104,6 +105,37 @@
    [ global_sequence_ async ];
 
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+}
+
+-(void)testMaxConcurrentOperations
+{
+   [ self prepare ];
+
+   __block ADTOperationCounter operation_index_ = 0;
+
+   NSRange operations_range_ = NSMakeRange( 0, 50 );
+
+   ADConcurrent* concurrent_ = [ ADConcurrent compositeWithOperations: [ NSArray arrayWithOperationsFromRange: operations_range_
+                                                                                                    doneBlock: ADT_INCREMENT_COUNT( operation_index_ )
+                                                                                                delayFunction: ADTConstDelay( 1.0 ) ]
+                                                                 name: @"global"
+                                                            doneBlock: ADT_CHECK_TOTAL_COUNT( operation_index_, NSMaxRange( operations_range_ ) ) ];
+   
+   concurrent_.maxConcurrentOperationsCount = 15;
+   
+   [ concurrent_ async ];
+
+   [ NSThread sleepForTimeInterval: 1.1 ];
+   GHAssertTrue( operation_index_ == 15, @"Check completed operations count: %d", operation_index_ );
+
+   [ NSThread sleepForTimeInterval: 1.0 ];
+   GHAssertTrue( operation_index_ == 30, @"Check completed operations count: %d", operation_index_ );
+
+   [ NSThread sleepForTimeInterval: 1.0 ];
+   GHAssertTrue( operation_index_ == 45, @"Check completed operations count: %d", operation_index_ );
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.5 ];
+   GHAssertTrue( operation_index_ == 50, @"Check completed operations coun: %d", operation_index_ );
 }
 
 @end

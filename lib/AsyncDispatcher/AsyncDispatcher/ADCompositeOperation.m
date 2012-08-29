@@ -8,6 +8,7 @@
 #import "Detail/ADMutableResult.h"
 #import "Detail/ADOperation+Private.h"
 #import "Detail/ADBlockUtils.h"
+#import "Detail/ADSemaphore.h"
 
 @interface ADCompositeOperation ()
 
@@ -47,15 +48,19 @@
    return ( ADMutableCompositeResult* )context_;
 }
 
--(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
-                             inQueue:( ADDispatchQueue* )queue_
+-(void)asyncWithDoneBlock:( ADDoneBlock )done_block_
+                  inQueue:( ADDispatchQueue* )queue_
+                  monitor:( ADOperationMonitor* )monitor_
+                lifeCycle:( id< ADLifeCycle > )life_cycle_
 {
-   ADOperationMonitor* monitor_ = [ ADOperationMonitor new ];
-
    ADMutableCompositeResult* composite_result_ = [ ADMutableCompositeResult new ];
 
+   [ monitor_ incrementUsage ];
+   
    for ( ADOperation* operation_ in self.operations )
    {
+      [ life_cycle_ birth: operation_ ];
+
       ADDoneBlock operation_done_block_ = ^( id< ADResult > result_ )
       {
          [ composite_result_ setResult: result_ forName: operation_.name ];
@@ -64,6 +69,7 @@
          {
             [ monitor_ cancel ];
          }
+         [ life_cycle_ death: operation_ ];
       };
 
       [ operation_ asyncWithDoneBlock: operation_done_block_
@@ -78,6 +84,19 @@
    [ queue_ reqisterCompleteBlock: calculate_block_
                        forMonitor: monitor_ ];
 
+   [ monitor_ decrementUsage ];
+}
+
+-(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
+                             inQueue:( ADDispatchQueue* )queue_
+{
+   ADOperationMonitor* monitor_ = [ ADOperationMonitor new ];
+   
+   [ self asyncWithDoneBlock: done_block_
+                     inQueue: queue_
+                     monitor: monitor_
+                   lifeCycle: nil ];
+   
    return monitor_;
 }
 
@@ -147,6 +166,35 @@
    return [ self initWithName: name_
                    operations: operations_
                    concurrent: YES ];
+}
+
+-(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
+                             inQueue:( ADDispatchQueue* )queue_
+{
+   if ( self.maxConcurrentOperationsCount > 0 )
+   {
+      ADSemaphore* semaphore_ = [ ADSemaphore semaphoreWithValue: self.maxConcurrentOperationsCount ];
+      ADOperationMonitor* monitor_ = [ ADOperationMonitor new ];
+
+      [ queue_ async: ^()
+       {
+          [ self asyncWithDoneBlock: done_block_
+                            inQueue: queue_
+                            monitor: monitor_
+                          lifeCycle: semaphore_ ];
+       }];
+
+      return monitor_;
+   }
+
+   return [ super asyncWithDoneBlock: done_block_ inQueue: queue_ ];
+}
+
+-(id)copyWithZone:( NSZone* )zone_
+{
+   ADConcurrent* copy_ = [ super copyWithZone: zone_ ];
+   copy_.maxConcurrentOperationsCount = self.maxConcurrentOperationsCount;
+   return copy_;
 }
 
 @end

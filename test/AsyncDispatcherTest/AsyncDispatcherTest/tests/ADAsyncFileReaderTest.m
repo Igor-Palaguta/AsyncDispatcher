@@ -53,7 +53,8 @@
 {
    [ self prepare ];
 
-   GHAssertThrows( [ [ ADFileStream alloc ] initWithPath: nil ], @"Check file for nil path" );
+   ADFileStream* exception_stream_ = nil;
+   GHAssertThrows( exception_stream_ = [ [ ADFileStream alloc ] initWithPath: nil ], @"Check file for nil path" );
 
    ADFileStream* unexistent_file_reader_ = [ [ ADFileStream alloc ] initWithPath: @"/usr/include/unreal.txt" ];
    [ unexistent_file_reader_ read: 1 handler: ^BOOL( BOOL eof_, id< ADBuffer > buffer_, NSError* error_ )
