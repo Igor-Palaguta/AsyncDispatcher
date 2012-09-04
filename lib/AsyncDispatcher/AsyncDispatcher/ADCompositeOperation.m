@@ -171,7 +171,7 @@
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
                              inQueue:( ADDispatchQueue* )queue_
 {
-   if ( self.maxConcurrentOperationsCount > 0 )
+   if ( self.maxConcurrentOperationsCount > 0 && [ self.operations count ] > self.maxConcurrentOperationsCount )
    {
       ADSemaphore* semaphore_ = [ ADSemaphore semaphoreWithValue: self.maxConcurrentOperationsCount ];
       ADOperationMonitor* monitor_ = [ ADOperationMonitor new ];

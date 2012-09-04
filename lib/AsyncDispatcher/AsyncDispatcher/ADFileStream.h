@@ -3,6 +3,7 @@
 #import <Foundation/Foundation.h>
 
 /** File stream
+ @warning *Important:* ADFileStream requires iOS >= 5.0
  */
 @interface ADFileStream : NSObject< ADStream >
 

@@ -4,6 +4,7 @@
 #import "ADDispatchData.h"
 
 #import "ADDispatchArcDefs.h"
+#import "ADSystemVersion.h"
 
 #import "NSError+AsyncDispatcher.h"
 
@@ -32,6 +33,11 @@
 
 -(id)initWithPath:( NSString* )path_
 {
+   BOOL is_available_ = AD_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( @"5.0" );
+   NSAssert( is_available_, @"ADFileStream is available only in 5.0" );
+   if ( !is_available_ )
+      return nil;
+
    NSAssert( path_, @"path can't be nil" );
    if ( !path_ )
       return nil;

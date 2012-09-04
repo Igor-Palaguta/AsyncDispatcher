@@ -1,6 +1,7 @@
 #import "ADDispatchData.h"
 
 #import "ADDispatchArcDefs.h"
+#import "ADSystemVersion.h"
 
 static dispatch_data_t no_copy_dispatch_data( const void* buffer_, NSUInteger length_ )
 {
@@ -32,6 +33,11 @@ static dispatch_data_t no_copy_dispatch_data( const void* buffer_, NSUInteger le
 
 -(id)initWithData:( dispatch_data_t )data_
 {
+   BOOL is_available_ = AD_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( @"5.0" );
+   NSAssert( is_available_, @"ADDispatchData is available only in 5.0" );
+   if ( !is_available_ )
+      return nil;
+
    if ( !data_ )
       return nil;
 

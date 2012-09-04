@@ -150,6 +150,7 @@
 		D6DB47EF15E50A5200F69435 /* ADXmlDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADXmlDefs.h; sourceTree = "<group>"; };
 		D6DC68F315EB68DE00288E44 /* ADDoneBlockPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDoneBlockPerformer.h; sourceTree = "<group>"; };
 		D6DC68F415EB68DE00288E44 /* ADDoneBlockPerformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDoneBlockPerformer.m; sourceTree = "<group>"; };
+		D6E8841915F602A10057D52F /* ADSystemVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSystemVersion.h; sourceTree = "<group>"; };
 		D6FF644615DCDD9A00782132 /* ADStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADStream.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -279,6 +280,7 @@
 				D6DC68F315EB68DE00288E44 /* ADDoneBlockPerformer.h */,
 				D6DC68F415EB68DE00288E44 /* ADDoneBlockPerformer.m */,
 				D628642015EE09800055979B /* ADLifeCycle.h */,
+				D6E8841915F602A10057D52F /* ADSystemVersion.h */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -519,7 +521,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -538,7 +540,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
