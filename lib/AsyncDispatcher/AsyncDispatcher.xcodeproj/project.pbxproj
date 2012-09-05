@@ -17,6 +17,7 @@
 		D67025C215D247CF0058880C /* ADTimeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C115D247CE0058880C /* ADTimeConversion.m */; };
 		D67025C515D2535A0058880C /* ADOperationPriority.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C415D253590058880C /* ADOperationPriority.m */; };
 		D671E37D15C01F9B00F211DF /* ADAtomicDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */; };
+		D676CEA415F79B3900C1F6AB /* ADRequestHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = D676CEA315F79B3900C1F6AB /* ADRequestHolder.m */; };
 		D68CF4F015BECE5E00660CD6 /* ADMutableCompositeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */; };
 		D68CF58A15BFF00800660CD6 /* ADMutableResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D68CF58915BFF00700660CD6 /* ADMutableResult.m */; };
 		D697E36315E66C64006D9969 /* ADBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D697E36215E66C64006D9969 /* ADBuffer.mm */; };
@@ -98,6 +99,8 @@
 		D67025CD15D29AC20058880C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		D671E37B15C01F9A00F211DF /* ADAtomicDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAtomicDictionary.h; sourceTree = "<group>"; };
 		D671E37C15C01F9B00F211DF /* ADAtomicDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAtomicDictionary.m; sourceTree = "<group>"; };
+		D676CEA215F79B3900C1F6AB /* ADRequestHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADRequestHolder.h; sourceTree = "<group>"; };
+		D676CEA315F79B3900C1F6AB /* ADRequestHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADRequestHolder.m; sourceTree = "<group>"; };
 		D67B6CBC15B8364C0020BFC8 /* ADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADRequest.h; sourceTree = "<group>"; };
 		D68CF4EE15BECE5D00660CD6 /* ADMutableCompositeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMutableCompositeResult.h; sourceTree = "<group>"; };
 		D68CF4EF15BECE5D00660CD6 /* ADMutableCompositeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMutableCompositeResult.m; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 				D6DC68F415EB68DE00288E44 /* ADDoneBlockPerformer.m */,
 				D628642015EE09800055979B /* ADLifeCycle.h */,
 				D6E8841915F602A10057D52F /* ADSystemVersion.h */,
+				D676CEA215F79B3900C1F6AB /* ADRequestHolder.h */,
+				D676CEA315F79B3900C1F6AB /* ADRequestHolder.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				D6D9774B15DAC0E80082AEA9 /* NSError+AsyncDispatcher.m in Sources */,
 				D697E36315E66C64006D9969 /* ADBuffer.mm in Sources */,
 				D6DC68F515EB68DE00288E44 /* ADDoneBlockPerformer.m in Sources */,
+				D676CEA415F79B3900C1F6AB /* ADRequestHolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

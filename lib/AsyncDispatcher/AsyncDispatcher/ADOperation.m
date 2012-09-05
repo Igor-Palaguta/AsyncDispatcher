@@ -4,6 +4,7 @@
 #import "ADBlockWrappers.h"
 
 #import "Detail/ADOperation+Private.h"
+#import "Detail/ADRequestHolder.h"
 
 @interface ADOperation ()
 
@@ -30,13 +31,16 @@
 
 -(id< ADRequest >)asyncInSession:( ADSession* )session_
 {
-   __block id< ADRequest > request_ =
+   ADRequestHolder* holder_ = [ ADRequestHolder new ];
+
+   id< ADRequest > request_ =
    [ self asyncWithDoneBlock: ^( id< ADResult > result_ )
     {
-       [ session_ removeRequest: request_ ];
+       [ session_ removeRequest: holder_ ];
     }];
 
-   [ session_ addRequest: request_ ];
+   holder_.request = request_;
+   [ session_ addRequest: holder_ ];
 
    return request_;
 }
