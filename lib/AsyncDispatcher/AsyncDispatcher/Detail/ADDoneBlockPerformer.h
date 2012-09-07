@@ -2,15 +2,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol ADResult;
+
 @interface ADDoneBlockPerformer : NSObject
 
-@property ( nonatomic, copy, readonly ) ADDoneBlock doneBlock;
++(id)performerWithDoneBlock:( ADDoneBlock )done_block_;
 
-+(id)performerForDoneBlock:( ADDoneBlock )done_block_;
-
--(void)perform:( id< ADResult > )result_;
-
+//If releaseWhenDone is YES doneBlock is released
+//It is useful for releasing all block context variables in same thread
 -(void)performOnThread:( NSThread* )thread_
-            withResult:( id< ADResult > )result_;
+            withResult:( id< ADResult > )result_
+       releaseWhenDone:( BOOL )release_when_done_;
 
 @end

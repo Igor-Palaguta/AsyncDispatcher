@@ -36,13 +36,14 @@ ADDoneBlock ADDoneOnBackgroundThread( ADDoneBlock sync_done_block_ )
 
 ADDoneBlock ADDoneOnThisThread( ADDoneBlock sync_done_block_ )
 {
-   ADDoneBlockPerformer* performer_ = [ ADDoneBlockPerformer performerForDoneBlock: sync_done_block_ ];
+   ADDoneBlockPerformer* performer_ = [ ADDoneBlockPerformer performerWithDoneBlock: sync_done_block_ ];
    NSThread* caller_thread_ = [ NSThread currentThread ];
 
    return ^void( id< ADResult > result_ )
    {
       [ performer_ performOnThread: caller_thread_
-                        withResult: result_ ];
+                        withResult: result_
+                   releaseWhenDone: YES ];
    };
 }
 
