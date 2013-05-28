@@ -92,7 +92,7 @@
 
       if ( continue_ && !eof_ && error_ == nil )
       {
-         [ self read: count_ handler: cyclic_handler_ ];
+         [ self cyclicRead: count_ handler: handler_ ];
       }
       return continue_;
    };
