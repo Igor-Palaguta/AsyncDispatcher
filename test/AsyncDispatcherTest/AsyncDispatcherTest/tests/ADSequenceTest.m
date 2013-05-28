@@ -224,9 +224,8 @@
    [ request_ wait ];
 
    NSLog(@"operations_success_: %d, operations_cancelled_: %d", operations_success_, operations_cancelled_);
-#warning Should be strict equal
-   GHAssertTrue( operations_success_ >= 15, @"Check success operations count" );
-   GHAssertTrue( operations_cancelled_ <= 10, @"Check cancelled operations count" );
+   GHAssertTrue( operations_success_ == 15, @"Check success operations count" );
+   GHAssertTrue( operations_cancelled_ == 10, @"Check cancelled operations count" );
 }
 
 
