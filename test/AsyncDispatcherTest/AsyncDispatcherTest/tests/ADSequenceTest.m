@@ -184,4 +184,50 @@
    GHAssertTrue( operations_failed_ == 10, @"Check failed operations count" );
 }
 
+-(void)testErrorInSequenceWithConcurrent
+{
+   NSRange operations_range_ = NSMakeRange( 0, 15 );
+   
+   __block ADTOperationCounter operations_success_ = 0;
+   __block ADTOperationCounter operations_cancelled_ = 0;
+   NSMutableArray* operations_ = [ NSMutableArray arrayWithOperationsFromRange: operations_range_
+                                                                     doneBlock: ADT_INCREMENT_SUCCESS_CANCELLED( operations_success_, operations_cancelled_ ) ];
+   
+   operations_range_.location += operations_range_.length;
+   
+   [ operations_ addObject: [ ADBlockOperation operationWithName: @"failed"
+                                                errorDescription: @"Error description"
+                                                       doneBlock: ADT_INCREMENT_SUCCESS_CANCELLED( operations_success_, operations_cancelled_ ) ] ];
+   
+   operations_range_.location += 1;
+   operations_range_.length = 10;
+   
+   {
+      NSArray* concurrent_operations_ = [ NSArray arrayWithOperationsFromRange: operations_range_
+                                                                     doneBlock: ADT_INCREMENT_SUCCESS_CANCELLED( operations_success_, operations_cancelled_ ) ];
+
+      ADConcurrent* concurrent_ = [ ADConcurrent compositeWithOperations: concurrent_operations_
+                                                                    name: @"concurrent"
+                                                               doneBlock: nil ];
+
+      [ operations_ addObject: concurrent_ ];
+   }
+
+   ADSequence* sequence_ = [ ADSequence compositeWithOperations: operations_
+                                                           name: @"global"
+                                                      doneBlock: ^( id< ADResult > result_ )
+                            {
+                               NSLog( @"Result: %@", result_ );
+                            }];
+   
+   id< ADRequest > request_ = [ sequence_ async ];
+   [ request_ wait ];
+
+   NSLog(@"operations_success_: %d, operations_cancelled_: %d", operations_success_, operations_cancelled_);
+#warning Should be strict equal
+   GHAssertTrue( operations_success_ >= 15, @"Check success operations count" );
+   GHAssertTrue( operations_cancelled_ <= 10, @"Check cancelled operations count" );
+}
+
+
 @end

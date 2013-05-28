@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D60678E715E8FB4A00858D4C /* ADConcurrentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38015C025DC00F211DF /* ADConcurrentTest.m */; };
-		D628641815ED09DB0055979B /* ADBlockOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */; };
-		D628641915ED09DB0055979B /* ADSequenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38115C025DC00F211DF /* ADSequenceTest.m */; };
-		D628641A15ED09DB0055979B /* ADSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B45A715C9280300AE8EC4 /* ADSessionTest.m */; };
-		D628641B15ED09DB0055979B /* ADPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */; };
-		D628641C15ED09DB0055979B /* ADOperationPriorityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C715D256B00058880C /* ADOperationPriorityTest.m */; };
-		D628641D15ED09DB0055979B /* ADAsyncFileReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABD615DA909000A2AE77 /* ADAsyncFileReaderTest.m */; };
-		D628641E15ED09DB0055979B /* ADSaxParserTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = D66E71FD15E3C8BE00A55872 /* ADSaxParserTest.mm */; };
+		7870276117547A3C007F2392 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7870276017547A3C007F2392 /* GHUnitIOS.framework */; };
+		7870276317549ECB007F2392 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870276217549ECB007F2392 /* Default-568h@2x.png */; };
+		7870276C1754A0E5007F2392 /* ADSequenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38115C025DC00F211DF /* ADSequenceTest.m */; };
+		787027AF1754ACA6007F2392 /* ADBlockOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */; };
+		787027B01754ACA6007F2392 /* ADConcurrentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38015C025DC00F211DF /* ADConcurrentTest.m */; };
+		787027B11754ACA6007F2392 /* ADSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B45A715C9280300AE8EC4 /* ADSessionTest.m */; };
+		787027B21754ACA6007F2392 /* ADPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */; };
+		787027B31754ACA6007F2392 /* ADOperationPriorityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C715D256B00058880C /* ADOperationPriorityTest.m */; };
+		787027B41754ACA6007F2392 /* ADAsyncFileReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABD615DA909000A2AE77 /* ADAsyncFileReaderTest.m */; };
+		787027B51754ACA6007F2392 /* ADSaxParserTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = D66E71FD15E3C8BE00A55872 /* ADSaxParserTest.mm */; };
 		D66E720115E3D3B700A55872 /* libAsyncSaxParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D681423815DBE5BB00C7EFE7 /* libAsyncSaxParser.a */; };
 		D66E720315E3D40800A55872 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D66E720215E3D40800A55872 /* libxml2.dylib */; };
 		D671E38B15C025DC00F211DF /* ADDoneBlockChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38415C025DC00F211DF /* ADDoneBlockChecker.m */; };
@@ -22,7 +24,7 @@
 		D69BABE115DA9B0200A2AE77 /* big.xdxf in Resources */ = {isa = PBXBuildFile; fileRef = D69BABDF15DA9B0200A2AE77 /* big.xdxf */; };
 		D69BABE215DA9B0200A2AE77 /* medium.xdxf in Resources */ = {isa = PBXBuildFile; fileRef = D69BABE015DA9B0200A2AE77 /* medium.xdxf */; };
 		D69BABE415DA9B1900A2AE77 /* small.xdxf in Resources */ = {isa = PBXBuildFile; fileRef = D69BABE315DA9B1900A2AE77 /* small.xdxf */; };
-		D6B66DD115B98E920035AEB8 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B66DD015B98E920035AEB8 /* GHUnitIOS.framework */; };
+		D6ADDD2415FA2496005377DC /* ADTDeallocHere.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ADDD2315FA2496005377DC /* ADTDeallocHere.m */; };
 		D6C4EF4E15B3FE720035C505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF4D15B3FE720035C505 /* UIKit.framework */; };
 		D6C4EF5015B3FE720035C505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF4F15B3FE720035C505 /* Foundation.framework */; };
 		D6C4EF5215B3FE720035C505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4EF5115B3FE720035C505 /* CoreGraphics.framework */; };
@@ -63,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7870276017547A3C007F2392 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../GHUnitIOS.framework; sourceTree = "<group>"; };
+		7870276217549ECB007F2392 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D628641F15ED0A200055979B /* ADTOperationCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTOperationCounter.h; sourceTree = "<group>"; };
 		D62B45A715C9280300AE8EC4 /* ADSessionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSessionTest.m; sourceTree = "<group>"; };
 		D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPropertyTest.m; sourceTree = "<group>"; };
@@ -81,8 +85,9 @@
 		D69BABDF15DA9B0200A2AE77 /* big.xdxf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = big.xdxf; sourceTree = "<group>"; };
 		D69BABE015DA9B0200A2AE77 /* medium.xdxf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = medium.xdxf; sourceTree = "<group>"; };
 		D69BABE315DA9B1900A2AE77 /* small.xdxf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = small.xdxf; sourceTree = "<group>"; };
+		D6ADDD2215FA2496005377DC /* ADTDeallocHere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTDeallocHere.h; sourceTree = "<group>"; };
+		D6ADDD2315FA2496005377DC /* ADTDeallocHere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTDeallocHere.m; sourceTree = "<group>"; };
 		D6B66DC415B98E790035AEB8 /* AsyncDispatcher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AsyncDispatcher.xcodeproj; path = ../../lib/AsyncDispatcher/AsyncDispatcher.xcodeproj; sourceTree = "<group>"; };
-		D6B66DD015B98E920035AEB8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../../../../framework/GHUnitIOS.framework; sourceTree = "<group>"; };
 		D6C4EF4915B3FE720035C505 /* AsyncDispatcherTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncDispatcherTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C4EF4D15B3FE720035C505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6C4EF4F15B3FE720035C505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,12 +104,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7870276117547A3C007F2392 /* GHUnitIOS.framework in Frameworks */,
 				D66E720315E3D40800A55872 /* libxml2.dylib in Frameworks */,
 				D66E720115E3D3B700A55872 /* libAsyncSaxParser.a in Frameworks */,
 				D6C4EF4E15B3FE720035C505 /* UIKit.framework in Frameworks */,
 				D6C4EF5015B3FE720035C505 /* Foundation.framework in Frameworks */,
 				D6C4EF5215B3FE720035C505 /* CoreGraphics.framework in Frameworks */,
-				D6B66DD115B98E920035AEB8 /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +140,8 @@
 				D671E38615C025DC00F211DF /* ADOperation+ADTConstructors.m */,
 				D671E38715C025DC00F211DF /* ADTMacroses.h */,
 				D628641F15ED0A200055979B /* ADTOperationCounter.h */,
+				D6ADDD2215FA2496005377DC /* ADTDeallocHere.h */,
+				D6ADDD2315FA2496005377DC /* ADTDeallocHere.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 		D6C4EF3E15B3FE720035C505 = {
 			isa = PBXGroup;
 			children = (
+				7870276217549ECB007F2392 /* Default-568h@2x.png */,
 				D66E720215E3D40800A55872 /* libxml2.dylib */,
 				D6B66DC415B98E790035AEB8 /* AsyncDispatcher.xcodeproj */,
 				D6C4EF5315B3FE720035C505 /* AsyncDispatcherTest */,
@@ -181,7 +189,7 @@
 		D6C4EF4C15B3FE720035C505 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6B66DD015B98E920035AEB8 /* GHUnitIOS.framework */,
+				7870276017547A3C007F2392 /* GHUnitIOS.framework */,
 				D6C4EF4D15B3FE720035C505 /* UIKit.framework */,
 				D6C4EF4F15B3FE720035C505 /* Foundation.framework */,
 				D6C4EF5115B3FE720035C505 /* CoreGraphics.framework */,
@@ -293,6 +301,7 @@
 				D69BABE215DA9B0200A2AE77 /* medium.xdxf in Resources */,
 				D69BABE415DA9B1900A2AE77 /* small.xdxf in Resources */,
 				D6DB47E915E4D47600F69435 /* bad.xdxf in Resources */,
+				7870276317549ECB007F2392 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,14 +315,15 @@
 				D6C4EF5A15B3FE720035C505 /* main.m in Sources */,
 				D671E38B15C025DC00F211DF /* ADDoneBlockChecker.m in Sources */,
 				D671E38C15C025DC00F211DF /* ADOperation+ADTConstructors.m in Sources */,
-				D60678E715E8FB4A00858D4C /* ADConcurrentTest.m in Sources */,
-				D628641815ED09DB0055979B /* ADBlockOperationTest.m in Sources */,
-				D628641915ED09DB0055979B /* ADSequenceTest.m in Sources */,
-				D628641A15ED09DB0055979B /* ADSessionTest.m in Sources */,
-				D628641B15ED09DB0055979B /* ADPropertyTest.m in Sources */,
-				D628641C15ED09DB0055979B /* ADOperationPriorityTest.m in Sources */,
-				D628641D15ED09DB0055979B /* ADAsyncFileReaderTest.m in Sources */,
-				D628641E15ED09DB0055979B /* ADSaxParserTest.mm in Sources */,
+				D6ADDD2415FA2496005377DC /* ADTDeallocHere.m in Sources */,
+				7870276C1754A0E5007F2392 /* ADSequenceTest.m in Sources */,
+				787027AF1754ACA6007F2392 /* ADBlockOperationTest.m in Sources */,
+				787027B01754ACA6007F2392 /* ADConcurrentTest.m in Sources */,
+				787027B11754ACA6007F2392 /* ADSessionTest.m in Sources */,
+				787027B21754ACA6007F2392 /* ADPropertyTest.m in Sources */,
+				787027B31754ACA6007F2392 /* ADOperationPriorityTest.m in Sources */,
+				787027B41754ACA6007F2392 /* ADAsyncFileReaderTest.m in Sources */,
+				787027B51754ACA6007F2392 /* ADSaxParserTest.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +418,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/..\"",
-					"\"$(SRCROOT)/../../../../framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AsyncDispatcherTest/AsyncDispatcherTest-Prefix.pch";
@@ -424,7 +433,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/..\"",
-					"\"$(SRCROOT)/../../../../framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AsyncDispatcherTest/AsyncDispatcherTest-Prefix.pch";
