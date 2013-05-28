@@ -9,6 +9,8 @@
 
 @property ( nonatomic, AD_DISPATCH_PROPERTY, readonly ) dispatch_group_t group;
 
+-(id)initWithParentRequest:( id< ADRequest > )request_;
+
 -(void)incrementUsage;
 -(void)decrementUsage;
 

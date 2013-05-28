@@ -28,6 +28,7 @@
 
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )client_done_block_
                              inQueue:( ADDispatchQueue* )queue_
+                       parentRequest:( id< ADRequest > )request_
 {
    [ self doesNotRecognizeSelector: _cmd ];
    return nil;
@@ -99,7 +100,7 @@
 }
 
 -(ADQueueBlock)calculateBlockForRequest:( id< ADRequest > )request_
-                          doneBlock:( ADDoneBlock )client_done_block_
+                              doneBlock:( ADDoneBlock )client_done_block_
 {
    return [ self calculateBlockForRequest: request_
                                 doneBlock: client_done_block_
@@ -121,10 +122,11 @@
 }
 
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
+                       parentRequest:( id< ADRequest > )request_
 {
    ADDispatchQueue* queue_ = [ self createQueue ];
    queue_.priority = self.priority;
-   return [ self asyncWithDoneBlock: done_block_ inQueue: queue_ ];
+   return [ self asyncWithDoneBlock: done_block_ inQueue: queue_ parentRequest: request_ ];
 }
 
 @end

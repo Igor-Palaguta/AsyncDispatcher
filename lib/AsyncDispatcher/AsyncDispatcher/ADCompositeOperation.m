@@ -64,7 +64,7 @@
       ADDoneBlock operation_done_block_ = ^( id< ADResult > result_ )
       {
          [ composite_result_ setResult: result_ forName: operation_.name ];
-         
+
          if ( result_.isCancelled || result_.error )
          {
             [ monitor_ cancel ];
@@ -89,9 +89,10 @@
 
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
                              inQueue:( ADDispatchQueue* )queue_
+                       parentRequest:( id< ADRequest > )parent_request_
 {
-   ADOperationMonitor* monitor_ = [ ADOperationMonitor new ];
-   
+   ADOperationMonitor* monitor_ = [ [ ADOperationMonitor alloc ] initWithParentRequest: parent_request_ ];
+
    [ self asyncWithDoneBlock: done_block_
                      inQueue: queue_
                      monitor: monitor_
@@ -111,7 +112,7 @@
    {
       [ monitor_ incrementUsage ];
       ADDoneBlock done_block_ = ADDoneBlockSum( client_done_block_, ADDoneBlockDecrementMonitor( monitor_ ) );
-      [ self asyncWithDoneBlock: done_block_ inQueue: queue_ ];
+      [ self asyncWithDoneBlock: done_block_ inQueue: queue_ parentRequest: monitor_ ];
    }
    //If concurrent is pushed to serial queue, serial queue should be paused
    else if ( !queue_.isConcurrent )
@@ -130,8 +131,7 @@
            }
            );
 
-          id< ADRequest > child_request_ = [ self asyncWithDoneBlock: done_block_ ];
-          [ child_request_ setParentRequest: monitor_ ];
+          [ self asyncWithDoneBlock: done_block_ parentRequest:  monitor_ ];
        }
          withMonitor: monitor_ ];
    }
@@ -140,7 +140,7 @@
    {
       [ monitor_ incrementUsage ];
       ADDoneBlock done_block_ = ADDoneBlockSum( client_done_block_, ADDoneBlockDecrementMonitor( monitor_ ) );
-      [ self asyncWithDoneBlock: done_block_ ];
+      [ self asyncWithDoneBlock: done_block_ parentRequest: monitor_ ];
    }
 }
 
@@ -181,11 +181,12 @@
 
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
                              inQueue:( ADDispatchQueue* )queue_
+                       parentRequest:( id< ADRequest > )parent_request_
 {
    if ( self.maxConcurrentOperationsCount > 0 && [ self.operations count ] > self.maxConcurrentOperationsCount )
    {
       ADSemaphore* semaphore_ = [ ADSemaphore semaphoreWithValue: self.maxConcurrentOperationsCount ];
-      ADOperationMonitor* monitor_ = [ ADOperationMonitor new ];
+      ADOperationMonitor* monitor_ = [ [ ADOperationMonitor alloc ] initWithParentRequest: parent_request_ ];
 
       [ queue_ async: ^()
        {
@@ -198,7 +199,7 @@
       return monitor_;
    }
 
-   return [ super asyncWithDoneBlock: done_block_ inQueue: queue_ ];
+   return [ super asyncWithDoneBlock: done_block_ inQueue: queue_ parentRequest: parent_request_ ];
 }
 
 -(id)copyWithZone:( NSZone* )zone_

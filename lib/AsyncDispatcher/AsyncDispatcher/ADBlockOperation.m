@@ -55,8 +55,9 @@
 
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )client_done_block_
                              inQueue:( ADDispatchQueue* )queue_
+                       parentRequest:( id< ADRequest > )parent_request_
 {
-   ADOperationMonitor* monitor_ = [ ADOperationMonitor new ];
+   ADOperationMonitor* monitor_ = [ [ ADOperationMonitor alloc ] initWithParentRequest: parent_request_ ];
 
    [ self asyncWithDoneBlock: client_done_block_
                      inQueue: queue_

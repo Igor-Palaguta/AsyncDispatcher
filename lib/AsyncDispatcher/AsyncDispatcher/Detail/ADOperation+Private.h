@@ -18,10 +18,12 @@
                                 context:( id )context_;
 
 //Caller done block can be used when caller want to know when process is completed
--(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_;
+-(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )done_block_
+                       parentRequest:( id< ADRequest > )request_;
 
 -(id< ADRequest >)asyncWithDoneBlock:( ADDoneBlock )client_done_block_
-                             inQueue:( ADDispatchQueue* )queue_;
+                             inQueue:( ADDispatchQueue* )queue_
+                       parentRequest:( id< ADRequest > )request_;
 
 -(void)asyncWithDoneBlock:( ADDoneBlock )client_done_block_
                   inQueue:( ADDispatchQueue* )queue_

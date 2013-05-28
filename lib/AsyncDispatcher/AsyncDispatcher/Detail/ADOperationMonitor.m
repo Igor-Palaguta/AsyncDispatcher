@@ -17,6 +17,21 @@
 @synthesize parentRequest;
 @synthesize group = _group;
 
+-(id)initWithParentRequest:( id< ADRequest > )request_
+{
+   self = [ super init ];
+   if ( self )
+   {
+      self.parentRequest = request_;
+   }
+   return self;
+}
+
+-(id)init
+{
+   return [ self initWithParentRequest: nil ];
+}
+
 -(void)dealloc
 {
    AD_DISPATCH_RELEASE( _group );

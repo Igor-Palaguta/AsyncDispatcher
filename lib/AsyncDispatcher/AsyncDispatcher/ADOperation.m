@@ -37,7 +37,7 @@
    [ self asyncWithDoneBlock: ^( id< ADResult > result_ )
     {
        [ session_ removeRequest: holder_ ];
-    }];
+    } parentRequest: nil ];
 
    holder_.request = request_;
    [ session_ addRequest: holder_ ];
