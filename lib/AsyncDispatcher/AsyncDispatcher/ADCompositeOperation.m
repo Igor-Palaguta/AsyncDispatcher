@@ -119,8 +119,19 @@
       [ queue_ async: ^()
        {
           [ queue_ pause ];
-          ADDoneBlock done_block_ = ADDoneBlockSum( client_done_block_, ADDoneBlockResumeQueue( queue_ ) );
-          [ self asyncWithDoneBlock: done_block_ ];
+
+          [ monitor_ incrementUsage ];
+
+          ADDoneBlock done_block_ = ADDoneBlockSum
+          ( client_done_block_, ^( id< ADResult > result_ )
+           {
+              [ queue_ resume ];
+              [ monitor_ decrementUsage ];
+           }
+           );
+
+          id< ADRequest > child_request_ = [ self asyncWithDoneBlock: done_block_ ];
+          [ child_request_ setParentRequest: monitor_ ];
        }
          withMonitor: monitor_ ];
    }

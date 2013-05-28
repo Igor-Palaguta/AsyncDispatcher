@@ -3,16 +3,19 @@
 #import "ADTimeConversion.h"
 
 @interface ADOperationMonitor ()
+{
+   BOOL _isCancelled;
+}
 
+@property ( nonatomic, strong ) id< ADRequest > parentRequest;
 @property ( nonatomic, AD_DISPATCH_PROPERTY ) dispatch_group_t group;
-@property ( assign ) BOOL isCancelled;
 
 @end
 
 @implementation ADOperationMonitor
 
+@synthesize parentRequest;
 @synthesize group = _group;
-@synthesize isCancelled;
 
 -(void)dealloc
 {
@@ -55,7 +58,21 @@
 
 -(void)cancel
 {
-   self.isCancelled = YES;
+   @synchronized (self)
+   {
+      _isCancelled = YES;
+   }
+}
+
+-(BOOL)isCancelled
+{
+   @synchronized (self)
+   {
+      if ( _isCancelled )
+         return YES;
+
+      return self.parentRequest.isCancelled;
+   }
 }
 
 @end

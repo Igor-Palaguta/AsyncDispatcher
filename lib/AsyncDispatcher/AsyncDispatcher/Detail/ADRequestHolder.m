@@ -24,4 +24,9 @@
    return [ self.request waitForTimeInterval: seconds_ ];
 }
 
+-(void)setParentRequest:( id< ADRequest > )request_
+{
+   [ self.request setParentRequest: request_ ];
+}
+
 @end

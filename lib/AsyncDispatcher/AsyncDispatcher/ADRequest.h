@@ -20,4 +20,7 @@
  */
 -(BOOL)waitForTimeInterval:( NSTimeInterval )seconds_;
 
+//If parent request is cancelled this request is cancelled too
+-(void)setParentRequest:( id< ADRequest > )request_;
+
 @end
