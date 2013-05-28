@@ -4,6 +4,18 @@
 
 #import "Detail/ADDoneBlockPerformer.h"
 
+AD_EXPORT ADWorkerBlock ADURLWorker( NSURL* url_ )
+{
+   return ^id( NSError** error_ )
+   {
+      NSURLRequest* request_ = [ NSURLRequest requestWithURL: url_ ];
+
+      return [ NSURLConnection sendSynchronousRequest: request_
+                                    returningResponse: 0
+                                                error: error_ ];
+   };
+}
+
 ADDoneBlock ADFilterCancelledResult( ADDoneBlock sync_done_block_ )
 {
    return ^void( id< ADResult > result_ )
@@ -109,6 +121,11 @@ void ADAsyncOnMainThread( ADQueueBlock block_ )
    dispatch_async( dispatch_get_main_queue(), block_ );
 }
 
+void ADAsyncOnBackgroundThread( ADQueueBlock block_ )
+{
+   dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0 ), block_ );
+}
+
 void ADSyncOnMainThread( ADQueueBlock block_ )
 {
    dispatch_sync( dispatch_get_main_queue(), block_ );
@@ -119,4 +136,10 @@ void ADDelayAsyncOnMainThread( ADQueueBlock block_, NSTimeInterval time_interval
    dispatch_time_t dispatch_time_ = dispatch_time( DISPATCH_TIME_NOW, time_interval_ * NSEC_PER_SEC );
 
    dispatch_after( dispatch_time_, dispatch_get_main_queue(), block_ );
+}
+
+void ADDelayAsyncOnBackgroundThread( ADQueueBlock block_, NSTimeInterval time_interval_ )
+{
+   dispatch_time_t dispatch_time_ = dispatch_time( DISPATCH_TIME_NOW, time_interval_ * NSEC_PER_SEC );
+   dispatch_after( dispatch_time_, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0 ), block_ );
 }

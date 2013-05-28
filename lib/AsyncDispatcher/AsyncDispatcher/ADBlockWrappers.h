@@ -1,6 +1,10 @@
 #import "ADBlockDefs.h"
 #import "Detail/ADExport.h"
 
+/// Create HTTP worker block
+AD_EXPORT ADWorkerBlock ADURLWorker( NSURL* url_ );
+
+
 /// Creates new done block, that calls sync_done_block_ only if request was not cancelled
 AD_EXPORT ADDoneBlock ADFilterCancelledResult( ADDoneBlock sync_done_block_ );
 
@@ -41,9 +45,17 @@ AD_EXPORT ADTransformBlock ADNoTransformForFailedResult( ADTransformBlock sync_t
 AD_EXPORT void ADAsyncOnMainThread( ADQueueBlock block_ );
 
 
+/// Performs asynchronously block on background thread
+AD_EXPORT void ADAsyncOnBackgroundThread( ADQueueBlock block_ );
+
+
 /// Performs asynchronously block on main thread and wait until done
 AD_EXPORT void ADSyncOnMainThread( ADQueueBlock block_ );
 
 
 /// Performs asynchronously block on main thread after delay
 AD_EXPORT void ADDelayAsyncOnMainThread( ADQueueBlock block_, NSTimeInterval time_interval_ );
+
+
+/// Performs asynchronously block global queue after delay
+AD_EXPORT void ADDelayAsyncOnBackgroundThread( ADQueueBlock block_, NSTimeInterval time_interval_ );
