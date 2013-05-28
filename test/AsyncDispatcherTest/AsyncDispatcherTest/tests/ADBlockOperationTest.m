@@ -1,6 +1,7 @@
 #import "ADOperation+ADTConstructors.h"
 #import "ADTMacroses.h"
 #import "ADDoneBlockChecker.h"
+#import "ADTDeallocHere.h"
 
 #import <AsyncDispatcher/AsyncDispatcher.h>
 
@@ -34,6 +35,60 @@
    [ operation_ async ];
 
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+}
+
+-(void)testDeallocOnMainThread
+{
+   [ self prepare ];
+
+   @autoreleasepool
+   {
+      ADTDeallocHere* thread_tester_ = [ ADTDeallocHere expectsDeallocOnThread: [ NSThread mainThread ]
+                                                                          test: self
+                                                                      selector: _cmd ];
+
+      ADDoneBlock done_block_ = ADDoneOnMainThread(
+                                       ^( id< ADResult > result_ )
+                                       {
+                                          [ thread_tester_ doSomething ];
+                                       }
+                                       );
+
+      ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
+                                                                 doneBlock: done_block_
+                                                                     delay: 0.2 ];
+
+      [ operation_ async ];
+   }
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+}
+
+-(void)testDeallocOnThisThread
+{
+   [ self prepare ];
+
+   @autoreleasepool
+   {
+      ADTDeallocHere* thread_tester_ = [ ADTDeallocHere expectsDeallocOnThread: [ NSThread currentThread ]
+                                                                          test: self
+                                                                      selector: _cmd ];
+
+      ADDoneBlock done_block_ = ADDoneOnThisThread(
+                                                   ^( id< ADResult > result_ )
+                                                   {
+                                                      [ thread_tester_ doSomething ];
+                                                   }
+                                                   );
+
+      ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
+                                                                 doneBlock: done_block_
+                                                                     delay: 0.2 ];
+
+      [ operation_ async ];
+   }
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
 }
 
 -(void)testDoneOnBackgroundThread
