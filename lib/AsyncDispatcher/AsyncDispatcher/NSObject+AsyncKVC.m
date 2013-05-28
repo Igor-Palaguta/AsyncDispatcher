@@ -2,6 +2,7 @@
 
 #import "ADMutableResult.h"
 #import "ADOperation.h"
+#import "ADSession.h"
 
 #import "Detail/ADOperationSubscribers.h"
 
@@ -103,6 +104,11 @@ static char subscribers_association_;
    return copy_operation_;
 }
 
+-(ADSession*)sessionForAsyncOperationWithKey:( NSString* )key_
+{
+   return [ ADSession sharedSession ];
+}
+
 -(void)asyncValueForKey:( NSString* )key_
               doneBlock:( ADDoneBlock )done_block_
 {
@@ -120,7 +126,7 @@ static char subscribers_association_;
             subscribers_ = [ ADOperationSubscribers new ];
             [ subscribers_ addSubscriber: done_block_ ];
             [ self setAsyncSubscribers: subscribers_ forKey: key_ ];
-            [ operation_ async ];
+            [ operation_ asyncInSession: [ self sessionForAsyncOperationWithKey: key_ ] ];
          }
          else
          {

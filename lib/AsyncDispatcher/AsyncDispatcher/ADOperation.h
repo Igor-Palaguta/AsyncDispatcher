@@ -3,6 +3,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ADSession;
+
 @protocol ADRequest;
 
 /** Base class for all asynchronous operations
@@ -51,5 +53,11 @@
  @return ADRequest object for request manipulation
  */
 -(id< ADRequest >)async;
+
+/** Initiates async operation in user session
+ @param session_ user session
+ @return ADRequest object for request manipulation
+ */
+-(id< ADRequest >)asyncInSession:( ADSession* )session_;
 
 @end
