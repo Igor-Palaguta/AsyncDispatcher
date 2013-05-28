@@ -86,7 +86,7 @@
 -(void)cyclicRead:( NSUInteger )count_
           handler:( ADReadHandlerBlock )handler_
 {
-   __block ADReadHandlerBlock cyclic_handler_ = ^BOOL( BOOL eof_, id< ADBuffer > buffer_, NSError* error_ )
+   ADReadHandlerBlock cyclic_handler_ = ^BOOL( BOOL eof_, id< ADBuffer > buffer_, NSError* error_ )
    {
       BOOL continue_ = handler_( eof_, buffer_, error_ );
 
