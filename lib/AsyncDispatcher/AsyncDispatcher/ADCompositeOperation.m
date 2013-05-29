@@ -56,13 +56,20 @@
    ADMutableCompositeResult* composite_result_ = [ ADMutableCompositeResult new ];
 
    [ monitor_ incrementUsage ];
-   
+  
+   __block NSInteger operations_todo_ = [ self.operations count ];
+   ADQueueBlock calculate_block_ = [ self calculateBlockForRequest: monitor_
+                                                         doneBlock: done_block_
+                                                           context: composite_result_ ];
+
    for ( ADOperation* operation_ in self.operations )
    {
       [ life_cycle_ birth: operation_ ];
 
       ADDoneBlock operation_done_block_ = ^( id< ADResult > result_ )
       {
+         --operations_todo_;
+
          [ composite_result_ setResult: result_ forName: operation_.name ];
 
          if ( result_.isCancelled || result_.error )
@@ -70,19 +77,17 @@
             [ monitor_ cancel ];
          }
          [ life_cycle_ death: operation_ ];
+         
+         if ( operations_todo_ == 0 && calculate_block_ )
+         {
+            calculate_block_();
+         }
       };
 
       [ operation_ asyncWithDoneBlock: operation_done_block_
                               inQueue: queue_
                           withMonitor: monitor_ ];
    }
-
-   ADQueueBlock calculate_block_ = [ self calculateBlockForRequest: monitor_
-                                                         doneBlock: done_block_
-                                                           context: composite_result_ ];
-
-   [ queue_ reqisterCompleteBlock: calculate_block_
-                       forMonitor: monitor_ ];
 
    [ monitor_ decrementUsage ];
 }
