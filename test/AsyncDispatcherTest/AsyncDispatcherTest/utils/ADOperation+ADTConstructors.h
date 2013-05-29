@@ -23,6 +23,11 @@ extern ADTDelayFunction ADTReverseDelay(void);
       errorDescription:( NSString* )description_
              doneBlock:( ADDoneBlock )done_block_;
 
++(id)operationWithName:( NSString* )name_
+      errorDescription:( NSString* )description_
+             doneBlock:( ADDoneBlock )done_block_
+                 delay:( NSTimeInterval )delay_;
+
 @end
 
 @interface ADCompositeOperation (ADTConstructors)

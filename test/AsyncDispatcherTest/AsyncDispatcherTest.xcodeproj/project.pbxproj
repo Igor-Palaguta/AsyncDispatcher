@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		7870276117547A3C007F2392 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7870276017547A3C007F2392 /* GHUnitIOS.framework */; };
 		7870276317549ECB007F2392 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870276217549ECB007F2392 /* Default-568h@2x.png */; };
-		7870280D1754F547007F2392 /* ADSequenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38115C025DC00F211DF /* ADSequenceTest.m */; };
-		7870280E1754F571007F2392 /* ADConcurrentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38015C025DC00F211DF /* ADConcurrentTest.m */; };
-		7870280F1754F720007F2392 /* ADBlockOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */; };
-		787028101754F720007F2392 /* ADSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B45A715C9280300AE8EC4 /* ADSessionTest.m */; };
-		787028111754F720007F2392 /* ADPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */; };
-		787028121754F720007F2392 /* ADOperationPriorityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C715D256B00058880C /* ADOperationPriorityTest.m */; };
-		787028131754F720007F2392 /* ADAsyncFileReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABD615DA909000A2AE77 /* ADAsyncFileReaderTest.m */; };
-		787028141754F720007F2392 /* ADSaxParserTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = D66E71FD15E3C8BE00A55872 /* ADSaxParserTest.mm */; };
+		7870283A1756309E007F2392 /* ADSequenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38115C025DC00F211DF /* ADSequenceTest.m */; };
+		7870283B17564B4F007F2392 /* ADBlockOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E37F15C025DC00F211DF /* ADBlockOperationTest.m */; };
+		7870283C17564B4F007F2392 /* ADConcurrentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38015C025DC00F211DF /* ADConcurrentTest.m */; };
+		7870283D17564B4F007F2392 /* ADSessionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D62B45A715C9280300AE8EC4 /* ADSessionTest.m */; };
+		7870283E17564B4F007F2392 /* ADPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D651A04115CFB5AF00BE8FD0 /* ADPropertyTest.m */; };
+		7870283F17564B4F007F2392 /* ADOperationPriorityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D67025C715D256B00058880C /* ADOperationPriorityTest.m */; };
+		7870284017564B4F007F2392 /* ADAsyncFileReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D69BABD615DA909000A2AE77 /* ADAsyncFileReaderTest.m */; };
+		7870284117564B4F007F2392 /* ADSaxParserTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = D66E71FD15E3C8BE00A55872 /* ADSaxParserTest.mm */; };
 		D66E720115E3D3B700A55872 /* libAsyncSaxParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D681423815DBE5BB00C7EFE7 /* libAsyncSaxParser.a */; };
 		D66E720315E3D40800A55872 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D66E720215E3D40800A55872 /* libxml2.dylib */; };
 		D671E38B15C025DC00F211DF /* ADDoneBlockChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = D671E38415C025DC00F211DF /* ADDoneBlockChecker.m */; };
@@ -316,14 +316,14 @@
 				D671E38B15C025DC00F211DF /* ADDoneBlockChecker.m in Sources */,
 				D671E38C15C025DC00F211DF /* ADOperation+ADTConstructors.m in Sources */,
 				D6ADDD2415FA2496005377DC /* ADTDeallocHere.m in Sources */,
-				7870280D1754F547007F2392 /* ADSequenceTest.m in Sources */,
-				7870280E1754F571007F2392 /* ADConcurrentTest.m in Sources */,
-				7870280F1754F720007F2392 /* ADBlockOperationTest.m in Sources */,
-				787028101754F720007F2392 /* ADSessionTest.m in Sources */,
-				787028111754F720007F2392 /* ADPropertyTest.m in Sources */,
-				787028121754F720007F2392 /* ADOperationPriorityTest.m in Sources */,
-				787028131754F720007F2392 /* ADAsyncFileReaderTest.m in Sources */,
-				787028141754F720007F2392 /* ADSaxParserTest.mm in Sources */,
+				7870283A1756309E007F2392 /* ADSequenceTest.m in Sources */,
+				7870283B17564B4F007F2392 /* ADBlockOperationTest.m in Sources */,
+				7870283C17564B4F007F2392 /* ADConcurrentTest.m in Sources */,
+				7870283D17564B4F007F2392 /* ADSessionTest.m in Sources */,
+				7870283E17564B4F007F2392 /* ADPropertyTest.m in Sources */,
+				7870283F17564B4F007F2392 /* ADOperationPriorityTest.m in Sources */,
+				7870284017564B4F007F2392 /* ADAsyncFileReaderTest.m in Sources */,
+				7870284117564B4F007F2392 /* ADSaxParserTest.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

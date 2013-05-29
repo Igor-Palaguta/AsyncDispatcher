@@ -149,6 +149,58 @@
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
 }
 
+-(void)testSequenceDoneBlock
+{
+   [ self prepare ];
+
+   NSRange operations_range_ = NSMakeRange( 0, 15 );
+
+   NSString* inner_sequence_name_ = @"Sequence";
+   NSString* inner_operation_name_ = @"Operation";
+   NSString* inner_concurrent_name_ = @"Concurrent";
+
+   NSArray* expected_order_ = @[ inner_sequence_name_, inner_operation_name_, inner_concurrent_name_ ];
+   NSMutableArray* real_order_ = [ NSMutableArray array ];
+
+   ADSequence* inner_sequence_ = [ ADSequence compositeWithOperations: [ NSArray arrayWithOperationsFromRange: operations_range_
+                                                                                              doneBlock: nil
+                                                                                          delayFunction: ADTConstDelay( 0.1 ) ]
+                                                           name: inner_sequence_name_
+                                                      doneBlock: ^( id< ADResult > result_ )
+                                  {
+                                     [ real_order_ addObject: inner_sequence_name_ ];
+                                  }];
+
+   ADOperation* operation_ = [ [ ADBlockOperation alloc ] initWithName: inner_operation_name_ worker: ^id( NSError** error_ )
+                              {
+                                 return @(5);
+                              }];
+   
+   operation_.doneBlock = ^( id< ADResult > result_ )
+   {
+      [ real_order_ addObject: inner_operation_name_ ];
+   };
+
+   
+   ADConcurrent* inner_concurrent_ =
+   [ ADConcurrent compositeWithOperations: [ NSArray arrayWithOperationsFromRange: operations_range_
+                                                                        doneBlock: nil
+                                                                    delayFunction: ADTConstDelay( 0.1 ) ]
+                                     name: inner_concurrent_name_
+                                doneBlock: ^( id< ADResult > result_ )
+    {
+       [ real_order_ addObject: inner_concurrent_name_ ];
+    } ];
+
+   ADSequence* global_sequence_ = [ [ ADSequence alloc ] initWithName: nil
+                                                           operations: @[ inner_sequence_, operation_, inner_concurrent_ ] ];
+
+   id< ADRequest > request_ = [ global_sequence_ async ];
+   [ request_ wait ];
+
+   GHAssertTrue( [ expected_order_ isEqualToArray: real_order_ ], @"Compare expected order: %@ with real order: %@", expected_order_, real_order_ );
+}
+
 -(void)testErrorInSequence
 {
    NSRange operations_range_ = NSMakeRange( 0, 15 );
@@ -227,6 +279,5 @@
    GHAssertTrue( operations_success_ == 15, @"Check success operations count" );
    GHAssertTrue( operations_cancelled_ == 10, @"Check cancelled operations count" );
 }
-
 
 @end
