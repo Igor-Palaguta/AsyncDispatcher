@@ -10,6 +10,8 @@
 #import "Detail/ADBlockUtils.h"
 #import "Detail/ADSemaphore.h"
 
+#include <libkern/OSAtomic.h>
+
 @interface ADCompositeOperation ()
 
 @property ( nonatomic, strong ) NSArray* operations;
@@ -57,7 +59,7 @@
 
    [ monitor_ incrementUsage ];
   
-   __block NSInteger operations_todo_ = [ self.operations count ];
+   __block volatile int32_t operations_todo_ = [ self.operations count ];
    ADQueueBlock calculate_block_ = [ self calculateBlockForRequest: monitor_
                                                          doneBlock: done_block_
                                                            context: composite_result_ ];
@@ -68,7 +70,7 @@
 
       ADDoneBlock operation_done_block_ = ^( id< ADResult > result_ )
       {
-         --operations_todo_;
+         int32_t operations_remain_ = OSAtomicDecrement32( &operations_todo_ );
 
          [ composite_result_ setResult: result_ forName: operation_.name ];
 
@@ -78,7 +80,7 @@
          }
          [ life_cycle_ death: operation_ ];
          
-         if ( operations_todo_ == 0 && calculate_block_ )
+         if ( operations_remain_ == 0 && calculate_block_ )
          {
             calculate_block_();
          }
@@ -131,6 +133,7 @@
           ADDoneBlock done_block_ = ADDoneBlockSum
           ( client_done_block_, ^( id< ADResult > result_ )
            {
+              NSLog(@"client_done_block_: %@", self.name);
               [ queue_ resume ];
               [ monitor_ decrementUsage ];
            }

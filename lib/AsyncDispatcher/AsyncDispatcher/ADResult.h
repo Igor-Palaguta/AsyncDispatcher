@@ -44,7 +44,7 @@
 
 
 /// Result of composite operation
-@protocol ADCompositeResult <NSObject>
+@protocol ADCompositeResult <ADResult>
 
 /** Returns result of operation by name
   @param name_ name of operation
@@ -56,7 +56,7 @@
 
 
 /// Mutable result of composite operation
-@protocol ADMutableCompositeResult <ADCompositeResult>
+@protocol ADMutableCompositeResult <ADCompositeResult, ADMutableResult>
 
 /** Sets result for operation with name
  
