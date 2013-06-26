@@ -107,6 +107,80 @@
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
 }
 
+-(void)testErrorInConcurrent
+{
+   [ self prepare ];
+   
+
+   NSMutableArray* concurrents_array_ = [ NSMutableArray array ];
+
+   {
+      ADConcurrent* concurrent_ = [ ADConcurrent compositeWithOperations: [ NSArray arrayWithOperationsFromRange: NSMakeRange( 0, 100 ) doneBlock: nil ]
+                                                                    name: @"0..99"
+                                                               doneBlock: nil ];
+      
+      [ concurrents_array_ addObject: concurrent_ ];
+   }
+   
+   {
+      ADConcurrent* concurrent_ = [ ADConcurrent compositeWithOperations: [ NSArray arrayWithOperationsFromRange: NSMakeRange( 100, 100 ) doneBlock: nil ]
+                                                                    name: @"100..199"
+                                                               doneBlock: nil ];
+      
+      [ concurrents_array_ addObject: concurrent_ ];
+   }
+   
+   {
+      NSMutableArray* operations_ = [ NSMutableArray arrayWithOperationsFromRange: NSMakeRange( 200, 49 ) doneBlock: nil ];
+      
+      [ operations_ addObject: [ ADBlockOperation operationWithName: @"Failed"
+                                                   errorDescription: @"Inner error"
+                                                          doneBlock: nil ] ];
+
+
+      [ operations_ addObjectsFromArray: [ NSArray arrayWithOperationsFromRange: NSMakeRange( 250, 50 ) doneBlock: nil ] ];
+
+      ADConcurrent* concurrent_ = [ ADConcurrent compositeWithOperations: operations_
+                                                                    name: @"200..299"
+                                                               doneBlock: ^( id< ADResult > result_ )
+                                   {
+                                      if ( !result_.error )
+                                      {
+                                         [ self notify: kGHUnitWaitStatusFailure forSelector: _cmd ];
+                                      }
+                                   } ];
+
+      [ concurrents_array_ addObject: concurrent_ ];
+   }
+   
+   {
+      ADConcurrent* concurrent_ = [ ADConcurrent compositeWithOperations: [ NSArray arrayWithOperationsFromRange: NSMakeRange( 300, 100 ) doneBlock: nil ]
+                                                                    name: @"300..399"
+                                                               doneBlock: nil ];
+      
+      [ concurrents_array_ addObject: concurrent_ ];
+   }
+
+   ADConcurrent* concurrent_ = [ ADConcurrent compositeWithOperations: concurrents_array_
+                                                                 name: @"Global"
+                                                            doneBlock: ^( id< ADResult > result_ )
+                                {
+                                   NSLog(@"result: %@", result_);
+                                   if ( result_.error )
+                                   {
+                                      [ self notify: kGHUnitWaitStatusSuccess forSelector: _cmd ];
+                                   }
+                                   else
+                                   {
+                                      [ self notify: kGHUnitWaitStatusFailure forSelector: _cmd ];
+                                   }
+                                } ];
+
+   [ concurrent_ async ];
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+}
+
 -(void)testMaxConcurrentOperations
 {
    [ self prepare ];

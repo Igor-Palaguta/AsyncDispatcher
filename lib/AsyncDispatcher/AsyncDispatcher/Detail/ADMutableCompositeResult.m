@@ -18,13 +18,24 @@
    return ( ADAtomicDictionary* )[ self result ];
 }
 
+-(void)inheritErrorFromResult:( id< ADResult > )result_
+{
+   if ( result_.error && !self.error )
+   {
+      @synchronized ( self )
+      {
+         if ( !self.error )
+         {
+            self.error = result_.error;
+         }
+      }
+   }
+}
+
 -(void)setResult:( id< ADResult > )result_
          forName:( NSString* )name_
 {
-   if ( !self.error && !result_.isCancelled )
-   {
-      self.error = result_.error;
-   }
+   [ self inheritErrorFromResult: result_ ];
 
    if ( name_ )
    {

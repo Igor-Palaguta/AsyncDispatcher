@@ -4,9 +4,9 @@
 
 @interface ADMutableResult : NSObject< ADMutableResult >
 
-@property ( nonatomic, strong ) id result;
-@property ( nonatomic, strong ) NSError* error;
-@property ( nonatomic, assign, getter=isCancelled ) BOOL cancelled;
+@property ( strong ) id result;
+@property ( strong ) NSError* error;
+@property ( assign, getter=isCancelled ) BOOL cancelled;
 
 -(id)initWithResult:( id )result_
               error:( NSError* )error_;
