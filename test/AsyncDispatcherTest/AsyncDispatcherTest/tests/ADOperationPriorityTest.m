@@ -15,13 +15,13 @@
    ADWorkerBlock worker_ = ^id( NSError** error_ )
    {
       long long result_ = 0;
-      for ( long long i_ = 0; i_ < 100000000; ++i_ )
+      for ( long long i_ = 0; i_ < 1000000000; ++i_ )
       {
          result_ += i_;
       }
       
       NSTimeInterval time_spent_ = -[ now_ timeIntervalSinceNow ];
-      return [ NSNumber numberWithDouble: time_spent_ ];
+      return @(time_spent_);
    };
 
    ADBlockOperation* operation_ = [ [ ADBlockOperation alloc ] initWithName: name_
@@ -83,13 +83,12 @@
 
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 60.0 ];
 
-   NSArray* expected_states_ = [ NSArray arrayWithObjects: @"high"
+   NSArray* expected_states_ = @[@"high"
                                 , @"default"
                                 , @"low"
-                                , @"background"
-                                , nil ];
+                                , @"background"];
 
-   GHAssertTrue( [ states_ isEqualToArray: expected_states_ ], @"Check states" );
+   GHAssertTrue( [ states_ isEqualToArray: expected_states_ ], @"Compare real states: %@ with expected states: %@", states_, expected_states_ );
 }
 
 @end

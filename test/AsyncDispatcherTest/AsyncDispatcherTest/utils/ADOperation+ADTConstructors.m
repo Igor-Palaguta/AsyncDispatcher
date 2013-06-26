@@ -66,7 +66,7 @@ ADTDelayFunction ADTReverseDelay(void)
          [ NSThread sleepForTimeInterval: delay_ ];
       }
 
-      return [ NSNumber numberWithInteger: index_ ];
+      return @(index_);
    };
 
    ADBlockOperation* operation_ = [ [ self alloc ] initWithName: name_ worker: worker_ ];
@@ -89,7 +89,7 @@ ADTDelayFunction ADTReverseDelay(void)
 
       *error_ = [ NSError errorWithDomain: @"com.AsyncDispatcherTest"
                                      code: 0
-                                 userInfo: [ NSDictionary dictionaryWithObject: description_ forKey: NSLocalizedDescriptionKey ] ];
+                                 userInfo: @{NSLocalizedDescriptionKey: description_} ];
 
       return nil;
    };

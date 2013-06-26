@@ -74,7 +74,7 @@ typedef BOOL (^ADTResultPredicated)( id< ADResult > result_ );
       
       BOOL success_ = predicate_( result_ );
       NSAssert( success_, @"Check result value" );
-      [ states_ addObject: [ NSNumber numberWithBool: success_ ] ];
+      [ states_ addObject: @(success_) ];
    };
 }
 
@@ -129,10 +129,7 @@ typedef BOOL (^ADTResultPredicated)( id< ADResult > result_ );
 
    GHAssertTrue( [ tester_.value isEqualToString: expected_value_ ], @"Check property value" );
 
-   NSArray* expected_states_ = [ NSArray arrayWithObjects: [ NSNumber numberWithBool: YES ]
-                                , [ NSNumber numberWithBool: YES ]
-                                , [ NSNumber numberWithBool: YES ]
-                                , nil ];
+   NSArray* expected_states_ = @[@YES, @YES, @YES];
 
    GHAssertTrue( [ states_ isEqualToArray: expected_states_ ], @"Check states" );
 }
@@ -162,10 +159,7 @@ typedef BOOL (^ADTResultPredicated)( id< ADResult > result_ );
 
    GHAssertTrue( tester_.failedValue == nil, @"Check property value" );
 
-   NSArray* expected_states_ = [ NSArray arrayWithObjects: [ NSNumber numberWithBool: YES ]
-                                , [ NSNumber numberWithBool: YES ]
-                                , [ NSNumber numberWithBool: YES ]
-                                , nil ];
+   NSArray* expected_states_ = @[@YES, @YES, @YES];
 
    GHAssertTrue( [ states_ isEqualToArray: expected_states_ ], @"Check states" );
 }

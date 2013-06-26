@@ -24,8 +24,8 @@
 {
    return [ self fastEach: ^BOOL( const ADXMLChar* name_, const ADXMLChar* value_ )
            {
-              NSString* name_str_ = [ NSString stringWithUTF8String: ( const char* )name_ ];
-              NSString* value_str_ = [ NSString stringWithUTF8String: ( const char* )value_ ];
+              NSString* name_str_ = @(( const char* )name_);
+              NSString* value_str_ = @(( const char* )value_);
 
               return handler_( name_str_, value_str_ );
            }];

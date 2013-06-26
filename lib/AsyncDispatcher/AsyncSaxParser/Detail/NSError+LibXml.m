@@ -9,15 +9,14 @@ NSString* const ADLibXmlErrorDomain = @"com.AsyncSaxParser.libxml2";
 {
    return [ self errorWithDomain: ADLibXmlErrorDomain
                             code: errno_
-                        userInfo: [ NSDictionary dictionaryWithObject: error_str_
-                                                               forKey: NSLocalizedDescriptionKey ] ];
+                        userInfo: @{NSLocalizedDescriptionKey: error_str_} ];
 }
 
 +(id)libXmlErrorWithCode:( int )errno_
             cDescription:( const char* )error_c_str_
 {
    NSString* error_str_ = error_c_str_
-      ? [ NSString stringWithUTF8String: error_c_str_ ]
+      ? @(error_c_str_)
       : [ NSString stringWithFormat: @"Error number: %d", errno_ ];
 
    return [ self libXmlErrorWithCode: errno_
@@ -27,7 +26,7 @@ NSString* const ADLibXmlErrorDomain = @"com.AsyncSaxParser.libxml2";
 +(id)errorWithLibXmlFormat:( const char* )format_
                  arguments:( va_list )arguments_
 {
-   NSString* format_str_ = [ NSString stringWithUTF8String: format_ ];
+   NSString* format_str_ = @(format_);
    NSString* error_str_ = [ [ NSString alloc ] initWithFormat: format_str_
                                                     arguments: arguments_ ];
 

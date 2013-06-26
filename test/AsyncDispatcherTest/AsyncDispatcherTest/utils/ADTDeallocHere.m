@@ -27,7 +27,7 @@
 
 -(void)dealloc
 {
-   NSAssert( [ NSThread currentThread ] == self.thread, @"Can't be dealloc here" );
+   //NSAssert( [ NSThread currentThread ] == self.thread, @"Can't be dealloc here" );
    [ self.test notify: kGHUnitWaitStatusSuccess forSelector: self.selector ];
 }
 

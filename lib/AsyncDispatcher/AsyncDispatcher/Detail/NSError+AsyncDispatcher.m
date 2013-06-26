@@ -18,7 +18,7 @@ NSString* const ADAsyncDispatcherErrorDomain = @"com.AsyncDispatcher";
 
    return [ self errorWithDomain: @"com.AsyncDispatcher"
                             code: errno_
-                        userInfo: [ NSDictionary dictionaryWithObject: error_str_ forKey: NSLocalizedDescriptionKey ] ];
+                        userInfo: @{NSLocalizedDescriptionKey: error_str_} ];
 }
 
 @end

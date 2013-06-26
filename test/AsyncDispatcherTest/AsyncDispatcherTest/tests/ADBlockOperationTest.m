@@ -29,7 +29,7 @@
    [ self prepare ];
    
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
-                                                              doneBlock: ADDoneOnMainThread( ADCheckResultOnMainThread( ADNotifySuccess( nil, self, _cmd ), [ NSNumber numberWithInteger: 7 ] ) )
+                                                              doneBlock: ADDoneOnMainThread( ADCheckResultOnMainThread( ADNotifySuccess( nil, self, _cmd ), @7 ) )
                                                                   delay: 1.0 ];
 
    [ operation_ async ];
@@ -96,7 +96,7 @@
    [ self prepare ];
    
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
-                                                              doneBlock: ADDoneOnBackgroundThread( ADCheckResultOnBackgroundThread( ADNotifySuccess( nil, self, _cmd ), [ NSNumber numberWithInteger: 7 ] ) )
+                                                              doneBlock: ADDoneOnBackgroundThread( ADCheckResultOnBackgroundThread( ADNotifySuccess( nil, self, _cmd ), @7 ) )
                                                                   delay: 1.0 ];
    
    [ operation_ async ];
@@ -109,7 +109,7 @@
    [ self prepare ];
    
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
-                                                              doneBlock: ADDoneOnThisThread( ADCheckResultOnThisThread( ADNotifySuccess( nil, self, _cmd ), [ NSNumber numberWithInteger: 7 ] ) )
+                                                              doneBlock: ADDoneOnThisThread( ADCheckResultOnThisThread( ADNotifySuccess( nil, self, _cmd ), @7 ) )
                                                                   delay: 1.0 ];
    
    [ operation_ async ];
@@ -128,7 +128,7 @@
    {
       GHAssertTrue( ![ NSThread isMainThread ], @"Should not be main thread" );
       
-      result_.result = [ NSNumber numberWithInteger: [ result_.result intValue ] * 8 ];
+      result_.result = @([ result_.result intValue ] * 8);
    };
 
    [ operation_ async ];
@@ -147,7 +147,7 @@
    {
       GHAssertTrue( ![ NSThread isMainThread ], @"Should not be main thread" );
 
-      result_.result = [ NSNumber numberWithInteger: [ result_.result intValue ] * 8 ];
+      result_.result = @([ result_.result intValue ] * 8);
    };
 
    ADBlockOperation* operation_copy_ = [ operation_ copy ];
@@ -165,13 +165,13 @@
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: ADT_CHECK_RESULT( [ NSNumber numberWithInteger: 56 ] ) ];
 
-   operation_.doneBlock = ADDoneOnMainThread( ADCheckResultOnMainThread( ADNotifySuccess( nil, self, _cmd ), [ NSNumber numberWithInteger: 56 ] ) );
+   operation_.doneBlock = ADDoneOnMainThread( ADCheckResultOnMainThread( ADNotifySuccess( nil, self, _cmd ), @56 ) );
 
    operation_.transformBlock = ADTransfromOnMainThread
    ( ^void( id< ADMutableResult > result_ )
     {
        GHAssertTrue( [ NSThread isMainThread ], @"Should be main thread" );
-       result_.result = [ NSNumber numberWithInteger:[ result_.result intValue ] * 8 ];
+       result_.result = @([ result_.result intValue ] * 8);
     } );
 
    [ operation_ async ];
