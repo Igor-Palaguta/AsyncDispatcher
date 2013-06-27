@@ -64,6 +64,18 @@
                                                          doneBlock: done_block_
                                                            context: composite_result_ ];
 
+   BOOL (^check_complete_block_)(int32_t, ADQueueBlock) = ^BOOL( int32_t operations_remain_, ADQueueBlock composition_done_block_ )
+   {
+      if ( operations_remain_ == 0 && composition_done_block_ )
+      {
+         composition_done_block_();
+         return YES;
+      }
+      return NO;
+   };
+
+   check_complete_block_( operations_todo_, calculate_block_ );
+
    for ( ADOperation* operation_ in self.operations )
    {
       [ life_cycle_ birth: operation_ ];
@@ -79,11 +91,7 @@
             [ monitor_ cancel ];
          }
          [ life_cycle_ death: operation_ ];
-         
-         if ( operations_remain_ == 0 && calculate_block_ )
-         {
-            calculate_block_();
-         }
+         check_complete_block_( operations_remain_, calculate_block_ );
       };
 
       [ operation_ asyncWithDoneBlock: operation_done_block_

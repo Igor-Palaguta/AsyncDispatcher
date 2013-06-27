@@ -29,6 +29,28 @@
    [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
 }
 
+-(void)testEmptySequence
+{
+   [ self prepare ];
+
+   ADSequence* sequence_ = [ ADSequence compositeWithOperations: nil
+                                                           name: @"global"
+                                                      doneBlock:
+                            ADDoneOnMainThread
+                            (
+                             ^( id< ADResult > result_ )
+                             {
+                                if ( [ NSThread isMainThread ] )
+                                {
+                                   [ self notify: kGHUnitWaitStatusSuccess forSelector: _cmd ];
+                                }
+                             })];
+
+   [ sequence_ async ];
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.1 ];
+}
+
 -(void)testCopy
 {
    [ self prepare ];
