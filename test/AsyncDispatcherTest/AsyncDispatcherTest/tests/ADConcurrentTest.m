@@ -165,7 +165,6 @@
                                                                  name: @"Global"
                                                             doneBlock: ^( id< ADResult > result_ )
                                 {
-                                   NSLog(@"result: %@", result_);
                                    if ( result_.error )
                                    {
                                       [ self notify: kGHUnitWaitStatusSuccess forSelector: _cmd ];

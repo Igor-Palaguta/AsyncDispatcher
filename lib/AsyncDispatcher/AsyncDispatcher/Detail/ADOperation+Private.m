@@ -70,10 +70,7 @@
    {
       id< ADMutableResult > checked_result_ = [ self checkedResult: result_ forRequest: request_ ];
 
-      if ( !checked_result_.isCancelled )
-      {
-         self.transformBlock( result_ );
-      }
+      self.transformBlock( result_ );
 
       if ( done_block_)
       {

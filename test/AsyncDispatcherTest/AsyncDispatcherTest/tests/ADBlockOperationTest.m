@@ -17,11 +17,11 @@
 
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: ADT_CHECK_RESULT( [ NSNumber numberWithInteger: 7 ] )
-                                                                  delay: 1.0 ];
+                                                                  delay: 0.1 ];
 
    [ operation_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testDoneOnMainThread
@@ -30,11 +30,11 @@
    
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: ADDoneOnMainThread( ADCheckResultOnMainThread( ADNotifySuccess( nil, self, _cmd ), @7 ) )
-                                                                  delay: 1.0 ];
+                                                                  delay: 0.1 ];
 
    [ operation_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testDeallocOnMainThread
@@ -56,12 +56,12 @@
 
       ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                                  doneBlock: done_block_
-                                                                     delay: 0.2 ];
+                                                                     delay: 0.1 ];
 
       [ operation_ async ];
    }
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testDeallocOnThisThread
@@ -83,12 +83,12 @@
 
       ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                                  doneBlock: done_block_
-                                                                     delay: 0.2 ];
+                                                                     delay: 0.1 ];
 
       [ operation_ async ];
    }
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testDoneOnBackgroundThread
@@ -97,11 +97,11 @@
    
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: ADDoneOnBackgroundThread( ADCheckResultOnBackgroundThread( ADNotifySuccess( nil, self, _cmd ), @7 ) )
-                                                                  delay: 1.0 ];
+                                                                  delay: 0.1 ];
    
    [ operation_ async ];
    
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testDoneOnThisThread
@@ -110,11 +110,11 @@
    
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: ADDoneOnThisThread( ADCheckResultOnThisThread( ADNotifySuccess( nil, self, _cmd ), @7 ) )
-                                                                  delay: 1.0 ];
+                                                                  delay: 0.1 ];
    
    [ operation_ async ];
    
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 2.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testTransformBlock
@@ -133,7 +133,7 @@
 
    [ operation_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testCopy
@@ -155,7 +155,7 @@
 
    [ operation_copy_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testTransformOnMainThread
@@ -176,7 +176,7 @@
 
    [ operation_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testTransformOnFailedResult
@@ -195,40 +195,7 @@
 
    [ operation_ async ];
 
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 1.0 ];
-}
-
--(void)testCancelRequest
-{
-   [ self prepare ];
-
-   ADDoneBlock done_block_ = ^void( id< ADResult > result_ )
-   {
-      GHAssertTrue( result_.isCancelled, @"Result should be cancelled in doneBlock" );
-      [ self notify: kGHUnitWaitStatusSuccess forSelector: _cmd ];
-   };
-
-   ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
-                                                              doneBlock: done_block_
-                                                                  delay: 2.0 ];
-
-   operation_.transformBlock = ^void( id< ADMutableResult > result_ )
-   {
-      GHAssertTrue( NO, @"transformBlock should not be called when request was cancelled" );
-   };
-
-   id< ADRequest > request_ = [ operation_ async ];
-
-   ADDelayAsyncOnMainThread(
-                            ^()
-                            {
-                               [ request_ cancel ];
-                               GHAssertTrue( request_.isCancelled, @"Result should be cancelled after cancel" );
-                            }
-                            , 1.9 );
-
-   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 3.0 ];
-   GHAssertTrue( request_.isCancelled, @"Request should be cancelled" );
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.2 ];
 }
 
 -(void)testWaitRequest
@@ -266,7 +233,7 @@
 
    ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
                                                               doneBlock: ADFilterCancelledResult( fail_if_called_ )
-                                                                  delay: 1.0 ];
+                                                                  delay: 0.1 ];
 
    id< ADRequest > request_ = [ operation_ async ];
    [ request_ cancel ];
@@ -278,5 +245,42 @@
    [ request2_ wait ];
    GHAssertTrue( called_, @"doneBlock must be called" );
 }
+
+-(void)testCancelRequest
+{
+   [ self prepare ];
+
+   ADBlockOperation* operation_ = [ ADBlockOperation operationWithIndex: 7
+                                                              doneBlock: ^( id< ADResult > result_ )
+                                   {
+                                      if ( result_.isCancelled && [ result_.result isEqual: @(49) ] )
+                                      {
+                                         [ self notify: kGHUnitWaitStatusSuccess forSelector: _cmd ];
+                                      }
+                                      else
+                                      {
+                                         [ self notify: kGHUnitWaitStatusFailure forSelector: _cmd ];
+                                      }
+                                   }
+                                                                  delay: 0.2 ];
+
+   operation_.transformBlock = ^void( id< ADMutableResult > result_ )
+   {
+      NSInteger plain_result_ = [ result_.result integerValue ];
+      result_.result = @(plain_result_ * plain_result_);
+   };
+
+   id< ADRequest > request_ = [ operation_ async ];
+   ADDelayAsyncOnMainThread(
+                            ^()
+                            {
+                               [ request_ cancel ];
+                               GHAssertTrue( request_.isCancelled, @"Result should be cancelled after cancel" );
+                            }
+                            , 0.1 );
+
+   [ self waitForStatus: kGHUnitWaitStatusSuccess timeout: 0.3 ];
+}
+
 
 @end
